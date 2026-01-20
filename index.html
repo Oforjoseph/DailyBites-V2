@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Daily Bites</title>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon.png?v=2">
+
+  <!-- Tailwind CSS -->
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  
+  <!-- Ionicons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+  
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="/src/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/output.css">
+</head>
+
+<body id="page-top" class="bg-dark">
+
+  <!-- Navbar -->
+  <nav class="navbar-trans fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainNav">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <a class="text-2xl font-bold text-white hover:opacity-80 transition" href="#page-top">
+          Daily <span style="color: var(--color-primary);">Bites</span>
+        </a>
+        
+        <!-- Mobile menu button -->
+        <button class="md:hidden text-white focus:outline-none navbar-toggler" id="mobileMenuBtn">
+          <div class="space-y-1.5">
+            <span class="block w-6 h-0.5 bg-white"></span>
+            <span class="block w-6 h-0.5 bg-white"></span>
+            <span class="block w-6 h-0.5 bg-white"></span>
+          </div>
+        </button>
+
+        <!-- Desktop menu -->
+        <div class="hidden md:flex items-center space-x-8 font-semibold" id="navbarMenu">
+          <a class="text-white hover:opacity-80 transition js-scroll" href="#home">Home</a>
+          <a class="text-white hover:opacity-80 transition js-scroll" href="#about">About</a>
+          <a class="text-white hover:opacity-80 transition" href="order.html">Order</a>
+          <a class="text-white hover:opacity-80 transition js-scroll" href="#work">Services</a>
+          <a class="text-white hover:opacity-80 transition js-scroll" href="#reviews">Reviews</a>
+          <a class="text-white hover:opacity-80 transition" href="https://wa.link/h84a2s">Contact</a>
+          
+          <button 
+            class="px-6 py-3 rounded-lg font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);"
+            onclick="payWithPaystack()">
+            Order Now
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden absolute top-full left-0 right-0 bg-black/95 p-4" id="mobileMenu">
+          <div class="flex flex-col space-y-4">
+            <a class="text-white hover:opacity-80 transition js-scroll" href="#home">Home</a>
+            <a class="text-white hover:opacity-80 transition js-scroll" href="#about">About</a>
+            <a class="text-white hover:opacity-80 transition" href="order.html">Order</a>
+            <a class="text-white hover:opacity-80 transition js-scroll" href="#work">Services</a>
+            <a class="text-white hover:opacity-80 transition js-scroll" href="#reviews">Reviews</a>
+            <a class="text-white hover:opacity-80 transition" href="">Contact</a>
+            <button 
+              class="px-6 py-3 rounded-lg font-bold text-white transition-all duration-300"
+              style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));"
+              onclick="payWithPaystack()">
+              Order Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div id="home" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url(img/NEWHERO.jpg)">
+    <div class="hero-overlay"></div>
+    <div class="relative z-10 container mx-auto px-4 text-center text-white">
+      <p class="text-2xl md:text-4xl mb-4" style="color: var(--color-primary);">20% OFF ON ALL NATIVE DISHES</p>
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to Daily Bites</h1>
+      <p class="text-xl md:text-2xl">
+        <span id="typed-text"></span>
+      </p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="bg-dark2 text-white rounded-lg shadow-2xl p-6 md:p-12">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Left Column -->
+          <div>
+            <div class="grid grid-cols-2 gap-6 mb-8">
+              <div class="col-span-1">
+                <img src="img/joeceo.jpg" class="w-full rounded-lg shadow-lg" alt="Daily Bites CEO">
+              </div>
+              <div class="col-span-1">
+                <div class="space-y-3">
+                  <p><span class="font-bold" style="color: var(--color-primary);">Name: </span><span>Daily Bites</span></p>
+                  <p><span class="font-bold" style="color: var(--color-primary);">Profile: </span><span>CEO</span></p>
+                  <p><span class="font-bold" style="color: var(--color-primary);">Email: </span><span>dailybitesng@gmail.com</span></p>
+                  <p><span class="font-bold" style="color: var(--color-primary);">Phone: </span><span>xxx-xxx-xxx</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills/Services -->
+            <div class="space-y-4">
+              <p class="font-bold text-lg" style="color: var(--color-primary);">FREQUENT SERVICES</p>
+              
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Fast foods</span>
+                  <span>85%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="progress-bar h-2 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Vegetables</span>
+                  <span>75%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="progress-bar h-2 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Spices</span>
+                  <span>50%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="progress-bar h-2 rounded-full" style="width: 50%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span>Native Dishes</span>
+                  <span>90%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="progress-bar h-2 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <div class="mb-6">
+              <h5 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">About US</h5>
+            </div>
+            <p class="text-lg mb-4">
+              WE AIM TO BE ONE OF THE LEADING PROVIDERS OF THE FOOD INDUSTRY DELIVERING EXCEPTIONAL VALUE AND UNMATCHED SPEED TO OUR CUSTOMERS
+            </p>
+            <p class="text-lg mb-4">
+              TO REVOLUTIONIZE THE VENDOR INDUSTRY BY OFFERING A SEAMLESS AND EFFICIENT EXPERIENCE BY ENSURING TIMELY AND RELIABLE DELIVERY OF TOP QUALITY FOOD AND PRODUCTS
+            </p>
+            <p class="text-lg">
+              OUR DEDICATED TEAM OF EXPERTS IS ALWAYS READY TO ASSIST YOU, 24/7 YOUR SATISFACTION IS OUR TOP PRIORITY WE COLLABORATE WITH TRUSTED SUPPLIER TO ENSURE CONSISTENT PRODUCT QUALITY AND TIMELY DELIVERY
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Counter Section -->
+  <div class="relative py-16 bg-cover bg-center bg-fixed" style="background-image: url(img/dailybites.jpg)">
+    <div class="absolute inset-0" style="background-color: var(--color-overlay);"></div>
+    <div class="relative z-10 container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+        <div>
+          <div class="flex justify-center mb-4">
+            <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
+          </div>
+          <p class="counter" data-target="450">0</p>
+          <span class="text-sm uppercase tracking-wider">WORKS COMPLETED</span>
+        </div>
+        <div>
+          <div class="flex justify-center mb-4">
+            <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
+          </div>
+          <p class="counter" data-target="15">0</p>
+          <span class="text-sm uppercase tracking-wider">AFFILIATED RESTAURANTS</span>
+        </div>
+        <div>
+          <div class="flex justify-center mb-4">
+            <span class="ico-circle"><i class="ion-ios-people"></i></span>
+          </div>
+          <p class="counter" data-target="550">0</p>
+          <span class="text-sm uppercase tracking-wider">TOTAL CLIENTS</span>
+        </div>
+        <div>
+          <div class="flex justify-center mb-4">
+            <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+          </div>
+          <p class="counter" data-target="36">0</p>
+          <span class="text-sm uppercase tracking-wider">AWARD WON</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services/Portfolio Section -->
+  <section id="work" class="py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h3 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-primary);">SERVICES</h3>
+        <p class="text-lg text-gray-300">WE DELIVER TO YOUR DOORSTEP</p>
+        <div class="w-20 h-1 mx-auto mt-4" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service Card 1 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/picfive.jpg" data-lightbox="gallery-mf">
+            <img src="img/picfive.jpg" alt="Native Dishes" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Native Dishes</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service Card 2 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/pictwo.jpg" data-lightbox="gallery-mf">
+            <img src="img/pictwo.jpg" alt="Assorted Dishes" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Assorted Dishes</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>Order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service Card 3 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/picnine.jpg" data-lightbox="gallery-mf">
+            <img src="img/picnine.jpg" alt="Fast Food" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Fast Food</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service Card 4 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/picthree.jpg" data-lightbox="gallery-mf">
+            <img src="img/picthree.jpg" alt="Vegetables" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Vegetables</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service Card 5 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/picsix.jpg" data-lightbox="gallery-mf">
+            <img src="img/picsix.jpg" alt="Breakfast and Brunch" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Breakfast and Brunch</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service Card 6 -->
+        <div class="work-card rounded-lg overflow-hidden shadow-lg">
+          <a href="img/picfour.jpg" data-lightbox="gallery-mf">
+            <img src="img/picfour.jpg" alt="Whole Food items" class="w-full h-64 object-cover">
+            <div class="work-overlay p-6">
+              <h2 class="text-2xl font-bold text-white mb-2">Whole Food items</h2>
+              <div class="text-gray-300">
+                <span>in stock</span> / <span>order now</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <div id="reviews" class="relative py-16 bg-cover bg-center bg-fixed min-h-1/3" style="background-image: url(img/newdailybites.jpg)">
+    <div class="absolute inset-0" style="background-color: var(--color-primaryo);"></div>
+    <div class="relative z-10 container mx-auto px-4">
+      <div class="max-w-4xl mx-auto h-96">
+        <div id="testimonial-slider">
+          <!-- Testimonial content loaded by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="relative py-16 bg-dark">
+    <div class="absolute inset-0 bg-dark text-light"></div>
+    <div class="relative z-10 container mx-auto px-4">
+      <div class="bg-dark2 text-white rounded-lg shadow-2xl p-6 md:p-12">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Contact Form -->
+          <div>
+            <h5 class="text-2xl font-bold mb-6" style="color: var(--color-primary);">Message Us</h5>
+            <form class="space-y-4" id="contactForm">
+              <div>
+                <input type="text" name="name" id="name" placeholder="Your Name" 
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
+              </div>
+              <div>
+                <input type="email" name="email" id="email" placeholder="Your Email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
+              </div>
+              <div>
+                <input type="text" name="subject" id="subject" placeholder="Subject"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
+              </div>
+              <div>
+                <textarea name="message" rows="5" placeholder="Message"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition"></textarea>
+              </div>
+              <div>
+                <a href="" target="_blank">
+                  <button type="button" 
+                    class="px-8 py-3 rounded-full text-white font-bold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                    style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    Send Message
+                  </button>
+                </a>
+              </div>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h5 class="text-2xl font-bold mb-6" style="color: var(--color-primary);">Get in Touch</h5>
+            <p class="text-lg mb-6">
+              We take pride in serving our customers to the best of our abilities to that end feel free to contact us or leave a review. Our Highly trained group of employees are ready to respond to any issue with just the tap of a button so <span style="color: var(--color-primary);" class="font-bold">REACH OUT NOW</span>.
+            </p>
+            <ul class="space-y-4 mb-8">
+              <li class="flex items-start">
+                <i class="ion-ios-location text-2xl mr-3" style="color: var(--color-primary);"></i>
+                <span>Ihe, Nsukka University road</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ion-ios-telephone text-2xl mr-3" style="color: var(--color-primary);"></i>
+                <span>09039614558</span>
+              </li>
+              <li class="flex items-start">
+                <i class="ion-email text-2xl mr-3" style="color: var(--color-primary);"></i>
+                <span>dailybitesng@gmail.com</span>
+              </li>
+            </ul>
+            <div class="flex space-x-4">
+              <a href="#" class="ico-circle"><i class="ion-social-facebook"></i></a>
+              <a href="#" class="ico-circle"><i class="ion-social-instagram"></i></a>
+              <a href="#" class="ico-circle"><i class="ion-social-twitter"></i></a>
+              <a href="#" class="ico-circle"><i class="ion-social-pinterest"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; Copyright <strong>RoarHub Nigeria</strong>. All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fa fa-chevron-up"></i>
+  </div>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- Custom JavaScript -->
+  <script src="/src/main.js" defer></script>
+
+</body>
+</html>
