@@ -10,17 +10,24 @@
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="favicon.png?v=2">
 
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   
-  
-  <!-- Ionicons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-  
-  <!-- Lightbox CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
+  <!-- Critical CSS first -->
+  <link href="src/output.css" rel="stylesheet">
   <link href="src/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="src/output.css">
+  
+  <!-- Non-blocking external CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" 
+        rel="stylesheet" 
+        media="print" 
+        onload="this.media='all'">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" 
+        rel="stylesheet"
+        media="print" 
+        onload="this.media='all'">
 </head>
 
 <body id="page-top" class="bg-dark">
@@ -103,7 +110,7 @@
           <div>
             <div class="grid grid-cols-2 gap-6 mb-8">
               <div class="col-span-1">
-                <img src="img/joeceo.jpg" class="w-full rounded-lg shadow-lg" alt="Daily Bites CEO">
+                <img src="img/joeceo.jpg" class="w-full rounded-lg shadow-lg" loading="lazy" alt="Daily Bites CEO">
               </div>
               <div class="col-span-1">
                 <div class="space-y-3">
@@ -243,7 +250,7 @@
         <!-- Service Card 1 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/picfive.jpg" data-lightbox="gallery-mf">
-            <img src="img/picfive.jpg" alt="Native Dishes" class="w-full h-64 object-cover">
+            <img src="img/picfive.jpg" loading="lazy" alt="Native Dishes" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Native Dishes</h2>
               <div class="text-gray-300">
@@ -256,7 +263,7 @@
         <!-- Service Card 2 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/pictwo.jpg" data-lightbox="gallery-mf">
-            <img src="img/pictwo.jpg" alt="Assorted Dishes" class="w-full h-64 object-cover">
+            <img src="img/pictwo.jpg" loading="lazy" alt="Assorted Dishes" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Assorted Dishes</h2>
               <div class="text-gray-300">
@@ -269,7 +276,7 @@
         <!-- Service Card 3 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/picnine.jpg" data-lightbox="gallery-mf">
-            <img src="img/picnine.jpg" alt="Fast Food" class="w-full h-64 object-cover">
+            <img src="img/picnine.jpg" loading="lazy" alt="Fast Food" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Fast Food</h2>
               <div class="text-gray-300">
@@ -282,7 +289,7 @@
         <!-- Service Card 4 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/picthree.jpg" data-lightbox="gallery-mf">
-            <img src="img/picthree.jpg" alt="Vegetables" class="w-full h-64 object-cover">
+            <img src="img/picthree.jpg" loading="lazy" alt="Vegetables" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Vegetables</h2>
               <div class="text-gray-300">
@@ -295,7 +302,7 @@
         <!-- Service Card 5 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/picsix.jpg" data-lightbox="gallery-mf">
-            <img src="img/picsix.jpg" alt="Breakfast and Brunch" class="w-full h-64 object-cover">
+            <img src="img/picsix.jpg" loading="lazy" alt="Breakfast and Brunch" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Breakfast and Brunch</h2>
               <div class="text-gray-300">
@@ -308,7 +315,7 @@
         <!-- Service Card 6 -->
         <div class="work-card rounded-lg overflow-hidden shadow-lg">
           <a href="img/picfour.jpg" data-lightbox="gallery-mf">
-            <img src="img/picfour.jpg" alt="Whole Food items" class="w-full h-64 object-cover">
+            <img src="img/picfour.jpg" loading="lazy" alt="Whole Food items" class="w-full h-64 object-cover">
             <div class="work-overlay p-6">
               <h2 class="text-2xl font-bold text-white mb-2">Whole Food items</h2>
               <div class="text-gray-300">
@@ -429,8 +436,8 @@
   <div id="preloader"></div>
 
   <!-- JavaScript Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
 
   <!-- Custom JavaScript -->
   <script src="src/main.js" defer></script>
