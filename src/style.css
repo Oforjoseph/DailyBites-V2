@@ -1,6 +1,6 @@
 :root {
       --color-primary: #ff6600;      /* Orange */
-      --color-primaryo: #00000054;      /* Orange */
+      --color-primaryo: #0000004e;      /* Orange */
       --color-secondary: #46dd00;    /* Green */
       --color-accent: #38ff01;       /* Light Green */
       --color-dark: #0c0c0c;         /* Dark background */
@@ -8,6 +8,50 @@
       --color-light: #ffffff;        /* White */
       --color-overlay: rgba(0, 0, 0, 0.489);
     }
+.custom-shape-divider-top-1768938175 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 20;
+}
+
+.custom-shape-divider-top-1768938175 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 38px;
+}
+
+.custom-shape-divider-top-1768938175 .shape-fill {
+    fill: var(--color-dark);
+}
+
+
+/* services svg */
+
+.custom-shape-divider-top-1768938382 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 20;
+}
+
+.custom-shape-divider-top-1768938382 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 40px;
+}
+
+.custom-shape-divider-top-1768938382 .shape-fill {
+    fill: #171717;
+}
 
     /* Custom Animations */
     @keyframes fadeIn {
