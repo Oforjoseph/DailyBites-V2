@@ -121,12 +121,12 @@
     let currentTestimonial = 0;
     const testimonials = [
       {
-        img: 'img/REVIEW.jpg',
+        img: 'img/REVIEW.webp',
         name: 'Chukwuemeka',
         text: 'I recently relocated to a new environment and i have been having trouble eating due to the poorly prepared meals, Until i stumbled upon daily bites now i eat what i like when i like and where i like God bless daily bites'
       },
       {
-        img: 'img/REVIEW2.jpg',
+        img: 'img/REVIEW2.webp',
         name: 'Amaka',
         text: 'Its a great service especially for someone who doesnt want to go far to eat well'
       }
@@ -153,7 +153,7 @@
     }, 4000);
 
     // Paystack Payment
-    function payWithPaystack() {
+    /* function payWithPaystack() {
       let handler = PaystackPop.setup({
         key: '', // Add your Paystack public key here
         email: 'customer@example.com',
@@ -168,4 +168,4 @@
       });
       handler.openIframe();
     }
-  
+   */
