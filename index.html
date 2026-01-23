@@ -1,446 +1,1045 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Daily Bites</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+  <head>
+    <meta charset="utf-8" />
+    <title>Daily Bites</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="favicon.png?v=2" />
 
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-  
-  <!-- Critical CSS first -->
-  <link href="src/output.css" rel="stylesheet">
-  <link href="src/style.css" rel="stylesheet">
-  
-  <!-- Non-blocking external CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" 
-        rel="stylesheet" 
-        media="print" 
-        onload="this.media='all'">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" 
-        rel="stylesheet"
-        media="print" 
-        onload="this.media='all'">
-</head>
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-<body id="page-top" class="bg-dark">
+    <!-- Critical CSS first -->
+    <link href="src/output.css" rel="stylesheet" />
+    <link href="src/style.css" rel="stylesheet" />
 
-  <!-- Navbar -->
-  <nav class="navbar-trans fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="mainNav">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between py-4">
-        <a class="text-2xl font-bold text-white hover:opacity-80 transition" href="#page-top">
-          Daily <span style="color: var(--color-primary);">Bites</span>
-        </a>
-        
-        <!-- Mobile menu button -->
-        <button class="md:hidden text-white focus:outline-none navbar-toggler" id="mobileMenuBtn">
-          <div class="space-y-1.5">
-            <span class="block w-6 h-0.5 bg-white"></span>
-            <span class="block w-6 h-0.5 bg-white"></span>
-            <span class="block w-6 h-0.5 bg-white"></span>
-          </div>
-        </button>
+    <!-- Non-blocking external CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media = 'all'"
+    />
+  </head>
 
-        <!-- Desktop menu -->
-        <div class="hidden md:flex items-center space-x-8 font-semibold" id="navbarMenu">
-          <a class="text-white hover:opacity-80 transition js-scroll" href="#home">Home</a>
-          <a class="text-white hover:opacity-80 transition js-scroll" href="#about">About</a>
-          <a class="text-white hover:opacity-80 transition" href="order.html">Order</a>
-          <a class="text-white hover:opacity-80 transition js-scroll" href="#work">Services</a>
-          <a class="text-white hover:opacity-80 transition js-scroll" href="#reviews">Reviews</a>
-          <a class="text-white hover:opacity-80 transition" href="https://wa.link/h84a2s">Contact</a>
-          
-          <button 
-            class="px-6 py-3 rounded-lg font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);"
-            onclick="payWithPaystack()">
-            Order Now
+  <body id="page-top" class="bg-dark ">
+    <!-- Navbar -->
+    <nav
+      class="navbar-trans fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      id="mainNav"
+    >
+      <div class="container max-w-4xl xl:max-w-6xl 2xl:max-w-7xl mx-auto px-4">
+        <div class="flex items-center justify-between py-4">
+          <a
+            class="text-2xl font-bold text-white hover:opacity-80 transition"
+            href="#page-top"
+          >
+            Daily <span style="color: var(--color-primary)">Bites</span>
+          </a>
+
+          <!-- Mobile menu button -->
+          <button
+            class="md:hidden text-white focus:outline-none navbar-toggler"
+            id="mobileMenuBtn"
+          >
+            <div class="space-y-1.5">
+              <span class="block w-6 h-0.5 bg-white"></span>
+              <span class="block w-6 h-0.5 bg-white"></span>
+              <span class="block w-6 h-0.5 bg-white"></span>
+            </div>
           </button>
-        </div>
 
-        <!-- Mobile menu -->
-        <div class="hidden md:hidden absolute top-full left-0 right-0 bg-black/95 p-4" id="mobileMenu">
-          <div class="flex flex-col space-y-4">
-            <a class="text-white hover:opacity-80 transition js-scroll" href="#home">Home</a>
-            <a class="text-white hover:opacity-80 transition js-scroll" href="#about">About</a>
-            <a class="text-white hover:opacity-80 transition" href="order.html">Order</a>
-            <a class="text-white hover:opacity-80 transition js-scroll" href="#work">Services</a>
-            <a class="text-white hover:opacity-80 transition js-scroll" href="#reviews">Reviews</a>
-            <a class="text-white hover:opacity-80 transition" href="">Contact</a>
-            <button 
-              class="px-6 py-3 rounded-lg font-bold text-white transition-all duration-300"
-              style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));"
-              onclick="payWithPaystack()">
-              Order Now
+          <!-- Desktop menu -->
+          <div
+            class="hidden md:flex items-center space-x-8 font-semibold"
+            id="navbarMenu"
+          >
+           <!--  <a
+              class="text-white hover:opacity-80 transition js-scroll"
+              href="#home"
+              >Home</a
+            > -->
+            <a
+              class="text-white hover:opacity-80 transition js-scroll"
+              href="#about"
+              >About</a
+            >
+           
+          
+            <a
+              class="text-white hover:opacity-80 transition js-scroll"
+              href="#reviews"
+              >Reviews</a
+            >
+            <a
+              class="text-white hover:opacity-80 transition"
+              href="#contact"
+              >Contact</a
+            >
+            <a class="text-white font-bold  hover:-translate-y-1 transition bg-secondary px-8 py-2 rounded-lg" href="order.html"
+            >Order Now</a>
+          
+          </div>
+
+          <!-- Mobile menu -->
+          <div
+            class="hidden md:hidden absolute top-full left-0 right-0 bg-black/95 p-4"
+            id="mobileMenu"
+          >
+            <div class="flex flex-col space-y-4">
+              <!-- <a
+                class="text-white hover:opacity-80 transition js-scroll"
+                href="#home"
+                >Home</a
+              > -->
+              <a
+                class="text-white hover:opacity-80 transition js-scroll"
+                href="#about"
+                >About</a
+              >
+              <a
+                class="text-white hover:opacity-80 transition js-scroll"
+                href="#reviews"
+                >Reviews</a
+              >
+                <a class="text-white font-bold  active:scale-105 bg-secondary px-8 py-2 rounded-lg text-center" href="order.html"
+            >Order Now</a>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div
+      id="home"
+      class="relative min-h-screen flex items-center justify-center bg-cover bg-center"
+      style="background-image: url(img/NEWHERO.webp)"
+    >
+      <div class="hero-overlay"></div>
+      <div class="relative z-10 container mx-auto px-4 text-center text-white">
+        <p
+          class="text-2xl md:text-4xl mb-4"
+          style="color: var(--color-primary)"
+        >
+          20% OFF ON ALL NATIVE DISHES
+        </p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Welcome to Daily Bites
+        </h1>
+        <p class="text-xl md:text-2xl">
+          <span id="typed-text"></span>
+        </p>
+      </div>
+    </div>
+
+<!--     HERO END -->
+
+<!-----------------POPULAR THIS WEEK--->
+   <section class="py-20 relative" style="background-color: var(--color-dark);">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white"> <span class="text-puprle">Popular </span>This Week</h3>
+            <p class="text-xl text-gray-300">What Everyone's Ordering</p>
+          </div>
+
+          <!-- Bento Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 max-w-6xl mx-auto">
+            <!-- Large Featured Card -->
+            <div class="md:col-span-2 md:row-span-2 magnetic-card rounded-3xl overflow-hidden relative group" 
+                 style="background-color: var(--color-dark2);">
+              <div class="h-full min-h-[400px] flex flex-col justify-end p-8 relative overflow-hidden">
+                <div class="absolute inset-0 " style="background-image:url(img/friedricecontinental.webp);  background-size: cover;
+            background-position: center;"></div>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <i class="ion-ios-nutrition text-9xl opacity-20 group-hover:scale-110 transition-transform duration-500" 
+                     style="color: var(--color-primary);"></i>
+                </div>
+                <div class="relative z-10">
+                  <div class="inline-block px-4 py-2 rounded-full mb-4 text-sm font-bold " 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    MOST POPULAR
+                  </div>
+                  <h4 class="text-4xl font-bold mb-3 text-white">Special Jollof Rice</h4>
+                  <p class="text-gray-100 mb-4 text-lg">Premium party jollof with grilled chicken, fried plantain, and coleslaw</p>
+                  <div class="flex items-center justify-between">
+                    <span class="text-5xl font-black price-pulse" style="color: var(--color-primary);">₦3,500</span>
+                    <button class="px-8 py-4 rounded-2xl bg-puprle font-bold text-white hover:scale-105 transition-transform">
+                      Order Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Small Card 1 -->
+            <div class="stagger-item magnetic-card rounded-3xl overflow-hidden" 
+            style="
+            background-image:url(img/rice.webp);
+            background-size: cover;
+            background-position: center;">
+              <div class="p-6 h-full flex flex-col justify-end">
+
+                <h4 class="text-2xl font-bold mb-2 text-white">Fried Rice</h4>
+                <p class="text-sm text-gray-100 mb-3">With chicken</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-3xl font-bold " style="color: var(--color-primary);">₦2,500</span>
+                  <button class="p-3 rounded-full glow-hover" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-plus text-white text-xl"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Small Card 2 -->
+            <div class="stagger-item magnetic-card rounded-3xl overflow-hidden" style="background-image:url(img/egusi.webp);
+            background-size: cover;
+            background-position: center;
+            ">
+              <div class="p-6 h-full flex flex-col">
+                <div class="flex-1 flex items-center justify-center mb-4">
+                  <i class="ion-ios-nutrition text-6xl" style="color: var(--color-primary);"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-white">Egusi soup</h4>
+                <p class="text-sm text-gray-100 mb-3">Assorted meat</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-3xl font-bold" style="color: var(--color-primary);">₦2,000</span>
+                  <button class="p-3 rounded-full glow-hover" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-plus text-white text-xl"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Small Card 3 -->
+            <div class="stagger-item magnetic-card rounded-3xl overflow-hidden"
+             style="background-image:url( img/shawarma.webp);
+             background-size: cover;
+            background-position: center;">
+              <div class="p-6 h-full flex flex-col">
+
+                <div class="flex-1 flex items-center justify-center mb-4">
+                  <i class="ion-ios-nutrition text-6xl" style="color:transparent ;"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-white">Shawarma</h4>
+                <p class="text-sm text-gray-100 mb-3">Beef or chicken</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-3xl font-bold" style="color: var(--color-primary);">₦1,500</span>
+                  <button class="p-3 rounded-full glow-hover" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-plus text-white text-xl"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Small Card 4 -->
+            <div class="stagger-item magnetic-card rounded-3xl overflow-hidden" style="background-image:url(img/fishsoup.webp);
+            background-size: cover;
+            background-position: center;">
+              <div class="p-6 h-full flex flex-col">
+                <div class="flex-1 flex items-center justify-center mb-4">
+                  <i class="ion-ios-nutrition text-6xl" style="color: transparent;"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 text-white">Pepper Soup</h4>
+                <p class="text-sm text-gray-100 mb-3">Catfish special</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-3xl font-bold" style="color: var(--color-primary);">₦2,200</span>
+                  <button class="p-3 rounded-full glow-hover" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-plus text-white text-xl"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-16">
+            <a href="order.html" class="inline-block px-10 py-5 rounded-full font-bold text-white text-xl gradient-button group">
+              <span class="inline-flex items-center">
+                Explore Full Menu
+                <i class="ion-arrow-right-c ml-3 group-hover:translate-x-2 transition-transform"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+ 
+        <!-- ============================================ -->
+    <!-- SECTION 5: SPECIAL OFFERS - TICKER STYLE -->
+    <!-- ============================================ -->
+  
+      <!-- COPY FROM HERE -->
+      <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-dark), var(--color-dark2));">
+         <div class="custom-shape-divider-top-1768938175">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M1200,0H0V120H281.94C572.9,116.24,602.45,3.86,602.45,3.86h0S632,116.24,923,120h277Z"
+        class="shape-fill"
+      />
+    </svg>
+  </div>
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white">Today's Hot Deals </h3>
+            <p class="text-xl text-gray-300">Limited Time Only</p>
+          </div>
+
+          <!-- Deals Grid -->
+          <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+            <!-- Deal 1 - Large -->
+            <div class="relative overflow-hidden rounded-3xl group cursor-pointer" 
+                 style="background: linear-gradient(135deg, #ff6600, #ff8833);">
+              <div class="absolute inset-0 bg-black/40"></div>
+              <div class="relative z-10 p-10 ">
+                <div class="inline-block px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm mb-4 text-sm font-bold">
+                  FLASH DEAL
+                </div>
+                <h4 class="text-5xl font-black mb-4 text-white">20% OFF</h4>
+                <p class="text-2xl mb-6 text-white/90">All Native Dishes</p>
+                <div class="flex items-center text-white/80">
+                  <i class="ion-ios-clock-outline text-2xl mr-3"></i>
+                  <span class="text-lg">Ends in 3 hours</span>
+                </div>
+                <button class="mt-6 px-8 py-4 rounded-full bg-white text-black font-bold group-hover:scale-105 transition-transform">
+                  Claim Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Deal 2 - Split -->
+            <div class="grid grid-rows-2 gap-8">
+              <div class="relative overflow-hidden rounded-3xl group cursor-pointer" 
+                   style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <div class="relative z-10 p-8 flex items-center justify-between">
+                  <div>
+                    <h4 class="text-3xl font-black mb-2 text-white">Buy 2 Get 1</h4>
+                    <p class="text-white/90">On all shawarma</p>
+                  </div>
+                  <i class="ion-ios-nutrition text-6xl text-white/50"></i>
+                </div>
+              </div>
+
+              <div class="relative overflow-hidden rounded-3xl group cursor-pointer" 
+                   style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                <div class="absolute inset-0 bg-black/30"></div>
+                <div class="relative z-10 p-8 flex items-center justify-between">
+                  <div>
+                    <h4 class="text-3xl font-black mb-2 text-white">Free Delivery</h4>
+                    <p class="text-white/90">Orders above ₦5,000</p>
+                  </div>
+                  <i class="ion-android-bicycle text-6xl text-white/50"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Promo Code Section -->
+          <div class="max-w-3xl mx-auto mt-12 p-8 rounded-2xl text-center" 
+               style="background-color: var(--color-dark2); border: 2px dashed var(--color-primary);">
+            <p class="text-lg mb-4 text-gray-300">Got a promo code?</p>
+            <div class="flex gap-1 md:gap-4 max-w-md mx-auto justify-center items-center">
+              <input type="text" 
+                     placeholder="Enter code here" 
+                     class="flex-1 px-2 md:px-4 py-3 rounded-lg bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white">
+              <button class="px-8 py-3 rounded-lg font-bold text-white gradient-button">
+                Apply
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!------------------SECTION END------------->
+
+<section class="py-20 relative overflow-hidden" style="background-color: var(--color-dark);">
+  
+        <!-- Morphing Background Shapes -->
+        <div class="morph-bg top-10 left-10" style="background: var(--color-primary);"></div>
+        <div class="morph-bg bottom-10 right-10" style="background: var(--color-secondary); animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white">How It Works</h3>
+            <p class="text-xl text-gray-300">Three Steps to Food Heaven</p>
+          </div>
+
+          <!-- Zig-Zag Steps -->
+          <div class="max-w-5xl mx-auto space-y-20">
+            <!-- Step 1 - Right aligned -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div class="order-2 md:order-1 text-center md:text-right connector-line">
+                <div class="inline-block float-animation">
+                  <div class="w-32 h-32 mx-auto md:ml-auto md:mr-0 rounded-3xl flex items-center justify-center text-6xl mb-6 glow-hover" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-ios-list text-white"></i>
+                  </div>
+                </div>
+                <span class="inline-block text-8xl font-black mb-4 opacity-20" style="color: var(--color-primary);">01</span>
+                <h4 class="text-3xl font-bold mb-4 text-white">Browse Menu</h4>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                  Explore our extensive selection of native dishes, continental cuisine, and fresh ingredients. Filter by category, price, or dietary preferences.
+                </p>
+              </div>
+              <div class="order-1 md:order-2">
+                <div class="relative">
+                  <div class="w-full h-64 rounded-2xl flex items-center justify-center tilt-card" 
+                       style="background-image:url(img/howitworks1.webp);
+            background-size: cover;
+            background-position: center;">
+                    <i class="ion-ios-book text-9xl" style="color: transparent;"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 - Left aligned -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div class="order-1">
+                <div class="relative">
+                  <div class="w-full h-64 rounded-2xl flex items-center justify-center tilt-card" 
+                       style="background-image:url(img/howitworks2.webp);
+            background-size: cover;
+            background-position: center;"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="order-2 text-center md:text-left connector-line">
+                <div class="inline-block float-animation" style="animation-delay: 1s;">
+                  <div class="w-32 h-32 mx-auto md:mr-auto md:ml-0 rounded-3xl flex items-center justify-center text-6xl mb-6 glow-hover" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-android-cart text-white"></i>
+                  </div>
+                </div>
+                <span class="inline-block text-8xl font-black mb-4 opacity-20" style="color: transparent;">02</span>
+                <h4 class="text-3xl font-bold mb-4 text-white">Place Your Order</h4>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                  Add items to cart, customize your meal, and checkout securely. Pay with card, transfer, or cash on delivery.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3 - Right aligned -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <div class="order-2 md:order-1 text-center md:text-right">
+                <div class="inline-block float-animation" style="animation-delay: 2s;">
+                  <div class="w-32 h-32 mx-auto md:ml-auto md:mr-0 rounded-3xl flex items-center justify-center text-6xl mb-6 glow-hover" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-android-bicycle text-white"></i>
+                  </div>
+                </div>
+                <span class="inline-block text-8xl font-black mb-4 opacity-20" style="color: var(--color-primary);">03</span>
+                <h4 class="text-3xl font-bold mb-4 text-white">Fast Delivery</h4>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                  Track your order in real-time. Fresh, hot food delivered to your doorstep in 30 minutes or less. Guaranteed!
+                </p>
+              </div>
+              <div class="order-1 md:order-2">
+                <div class="relative">
+                  <div class="w-full h-64 rounded-2xl flex items-center justify-center tilt-card" 
+                       style="background-image:url(img/howitworks3.webp);
+            background-size: cover;
+            background-position: center;">
+                    <i class="ion-model-s text-9xl" style="color:transparent;"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+
+
+
+    <!-- ============================================ -->
+    <!-- SECTION 2: FEATURED DISHES - BENTO GRID -->
+    <!-- ============================================ -->
+   
+      <!-- COPY FROM HERE -->
+   
+
+      <!-- ============================================ -->
+    <!-- SECTION 3: WHY CHOOSE US - DIAGONAL CARDS -->
+    <!-- ============================================ -->
+   
+      
+      <!-- COPY FROM HERE -->
+      <section class="py-20 relative overflow-hidden diagonal-section" style="background: linear-gradient(135deg, var(--color-dark2), var(--color-dark));">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white">Why Daily Bites?</h3>
+            <p class="text-xl text-gray-300">We're Not Just Fast, We're Better</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <!-- Feature 1 -->
+            <div class="group">
+              <div class="relative p-8 h-full rounded-2xl transition-all duration-300 hover:-rotate-2" 
+                   style="background-color: var(--color-dark2); border: 2px solid transparent;">
+                <div class="absolute -top-6 -right-6 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black glow-hover" 
+                     style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color: white;">
+                  ⚡
+                </div>
+                <div class="mb-6">
+                  <i class="ion-ios-speedometer text-6xl" style="color: var(--color-primary);"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 text-white">Lightning Fast</h4>
+                <p class="text-gray-300 mb-6">30-minute delivery guarantee or your meal is free. No excuses, no delays.</p>
+                <div class="text-4xl font-black" style="color: var(--color-green);">99.8%</div>
+                <div class="text-sm text-gray-400">On-time rate</div>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="group">
+              <div class="relative p-8 h-full rounded-2xl transition-all duration-300 hover:rotate-2" 
+                   style="background-color: var(--color-dark2); border: 2px solid transparent;">
+                <div class="absolute -top-6 -right-6 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black glow-hover" 
+                     style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color: white;">
+                  🌿
+                </div>
+                <div class="mb-6">
+                  <i class="ion-leaf text-6xl" style="color: var(--color-primary);"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 text-white">Fresh Daily</h4>
+                <p class="text-gray-300 mb-6">Ingredients sourced every morning. Prepared fresh, never frozen or reheated.</p>
+                <div class="text-4xl font-black" style="color: var(--color-green);">100%</div>
+                <div class="text-sm text-gray-400">Fresh guarantee</div>
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="group">
+              <div class="relative p-8 h-full rounded-2xl transition-all duration-300 hover:-rotate-2" 
+                   style="background-color: var(--color-dark2); border: 2px solid transparent;">
+                <div class="absolute -top-6 -right-6 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black glow-hover" 
+                     style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color: white;">
+                  📍
+                </div>
+                <div class="mb-6">
+                  <i class="ion-location text-6xl" style="color: var(--color-primary);"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 text-white">All Nsukka</h4>
+                <p class="text-gray-300 mb-6">Complete coverage across UNN campus, town, and surrounding areas. We go everywhere.</p>
+                <div class="text-4xl font-black" style="color: var(--color-green);">24/7</div>
+                <div class="text-sm text-gray-400">Service hours</div>
+              </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="group">
+              <div class="relative p-8 h-full rounded-2xl transition-all duration-300 hover:rotate-2" 
+                   style="background-color: var(--color-dark2); border: 2px solid transparent;">
+                <div class="absolute -top-6 -right-6 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-black glow-hover" 
+                     style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color: white;">
+                  💳
+                </div>
+                <div class="mb-6">
+                  <i class="ion-card text-6xl" style="color: var(--color-primary);"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-4 text-white">Easy Payment</h4>
+                <p class="text-gray-300 mb-6">Card, transfer, USSD, or cash. Pay however you want, whenever you want.</p>
+                <div class="text-4xl font-black" style="color: var(--color-green);">5+</div>
+                <div class="text-sm text-gray-400">Payment options</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Counter Section -->
+    <div class="p-16 bg-black"></div>
+
+    <div
+      class="relative py-16 bg-cover bg-center bg-fixed"
+      style="background-image: url(img/dailybites.jpg)"
+    >
+      <div
+        class="absolute inset-0"
+        style="background-color: var(--color-overlay)"
+      ></div>
+      <div class="relative z-10 container mx-auto px-4">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white"
+        >
+          <div>
+            <div class="flex justify-center mb-4">
+              <span class="ico-circle"
+                ><i class="ion-checkmark-round"></i
+              ></span>
+            </div>
+            <p class="counter" data-target="450">0</p>
+            <span class="text-sm uppercase tracking-wider"
+              >WORKS COMPLETED</span
+            >
+          </div>
+          <div>
+            <div class="flex justify-center mb-4">
+              <span class="ico-circle"
+                ><i class="ion-ios-calendar-outline"></i
+              ></span>
+            </div>
+            <p class="counter" data-target="15">0</p>
+            <span class="text-sm uppercase tracking-wider"
+              >AFFILIATED RESTAURANTS</span
+            >
+          </div>
+          <div>
+            <div class="flex justify-center mb-4">
+              <span class="ico-circle"><i class="ion-ios-people"></i></span>
+            </div>
+            <p class="counter" data-target="550">0</p>
+            <span class="text-sm uppercase tracking-wider">TOTAL CLIENTS</span>
+          </div>
+          <div>
+            <div class="flex justify-center mb-4">
+              <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
+            </div>
+            <p class="counter" data-target="36">0</p>
+            <span class="text-sm uppercase tracking-wider">AWARD WON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="p-16 bg-black"></div>
+    <!-- DIVIDER -->
+   
+    <!-- ============================================ -->
+    <!-- SECTION 4: DELIVERY ZONES - INTERACTIVE MAP -->
+    <!-- ============================================ -->
+   
+      <!-- COPY FROM HERE -->
+      <section class="pb-20 relative" style="background-color: var(--color-dark);">
+         <div class="custom-shape-divider-top-1768940382">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16">
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white">We Deliver Everywhere</h3>
+            <p class="text-xl text-gray-300">Select Your Zone</p>
+          </div>
+
+          <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+            <!-- Zone 1 -->
+            <div class="group relative overflow-hidden rounded-3xl p-8 cursor-pointer transition-all duration-500 hover:scale-105" 
+                 style="background-image:url(img/UNN-Ranking.webp);
+            background-size: cover;
+            background-position: center;">
+              <div class="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-orange-500/20 group-hover:to-transparent transition-all duration-500"></div>
+              <div class="relative z-10">
+                <div class="mb-6">
+                  <i class="ion-android-pin text-6xl group-hover:scale-125 transition-transform duration-300" style="color: transparent;"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-3 text-white">UNN Campus</h4>
+                <p class="text-gray-100 mb-4 font-bold">All hostels, faculties, and campus areas</p>
+                <div class="flex items-center text-sm">
+                  <i class="ion-ios-clock-outline mr-2" style="color: var(--color-accent);"></i>
+                  <span class="text-white">15-20 mins</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zone 2 -->
+            <div class="group relative overflow-hidden rounded-3xl p-8 cursor-pointer transition-all duration-500 hover:scale-105" 
+                 style="background-image:url(img/outdelivery.webp);
+            background-size: cover;
+            background-position: center;">
+              <div class="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-green-500/20 group-hover:to-transparent transition-all duration-500"></div>
+              <div class="relative z-10">
+                <div class="mb-6">
+                  <i class="ion-android-pin text-6xl group-hover:scale-125 transition-transform duration-300" style="color:transparent;"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-3 text-white">Nsukka Town</h4>
+                <p class="text-gray-100 font-bold mb-4">Odim, Market road, and town center</p>
+                <div class="flex items-center text-sm">
+                  <i class="ion-ios-clock-outline mr-2" style="color: var(--color-accent);"></i>
+                  <span class="text-white">20-25 mins</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zone 3 -->
+            <div class="group relative overflow-hidden rounded-3xl p-8 cursor-pointer transition-all duration-500 hover:scale-105" 
+                 style="background-image:url(img/deliveryhome.webp);
+            background-size: cover;
+            background-position: center;">
+              <div class="absolute inset-0 bg-gradient-to-br from-transparent to-transparent group-hover:from-blue-500/20 group-hover:to-transparent transition-all duration-500"></div>
+              <div class="relative z-10">
+                <div class="mb-6">
+                  <i class="ion-android-pin text-6xl group-hover:scale-125 transition-transform duration-300" style="color: transparent;"></i>
+                </div>
+                <h4 class="text-2xl font-bold mb-3 text-white">Environs</h4>
+                <p class="text-gray-100 font-bold mb-4">Ibagwa, Opi, and surrounding areas</p>
+                <div class="flex items-center text-sm">
+                  <i class="ion-ios-clock-outline mr-2" style="color: var(--color-accent);"></i>
+                  <span class="text-white">25-30 mins</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <p class="text-lg text-gray-300 mb-6">Don't see your area? <span class="font-bold" style="color: var(--color-puprle);">Contact us!</span></p>
+            <a href="https://wa.link/h84a2s" class="inline-block px-8 py-4 rounded-full font-bold text-white gradient-button">
+              <i class="ion-social-whatsapp mr-2"></i>
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- COPY UNTIL HERE -->
+    </div>
+
+    <!-- DIVIDER -->
+    
+     <!-- ============================================ -->
+    <!-- SECTION 5: SPECIAL OFFERS - TICKER STYLE -->
+    <!-- ============================================ -->
+  
+      <!-- COPY FROM HERE -->
+    
+
+    <!-- DIVIDER -->
+    
+
+    <!-- ============================================ -->
+    <!-- SECTION 6: INSTAGRAM GALLERY - MASONRY -->
+    <!-- ============================================ -->
+     
+   
+      <!-- COPY FROM HERE -->
+      <section class="py-20 relative" style="background-color: var(--color-dark);">
+        <div class="container mx-auto px-4">
+          <div class="text-center mb-16 ">
+            
+            <h3 class="text-4xl md:text-5xl font-bold mb-4 section-title text-white ">Insights 📸</h3>
+            <button class="bg-puprle px-8 py-3 rounded-lg font-bold text-white gradient-button">
+            <p class="text-xl text-white">Follow us @dailybites_ng</p>
             </button>
           </div>
-        </div>
-      </div>
+
+          <!-- Masonry Grid -->
+          <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 grid-flow-dense">
+
+  <!-- Photo 1 - Tall -->
+  <div class="row-span-2 group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-full min-h-[400px] flex items-center justify-center"
+      style="background-image:url(img/insights10.webp);
+      background-size: cover;
+      background-position: center;">
     </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div id="home" class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url(img/NEWHERO.webp)">
-    <div class="hero-overlay"></div>
-    <div class="relative z-10 container mx-auto px-4 text-center text-white">
-      <p class="text-2xl md:text-4xl mb-4" style="color: var(--color-primary);">20% OFF ON ALL NATIVE DISHES</p>
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome to Daily Bites</h1>
-      <p class="text-xl md:text-2xl">
-        <span id="typed-text"></span>
-      </p>
-    </div>
-  </div>
-  
-
-  <!-- About Section -->
-  <section id="about" class="py-16 md:py-24 relative">
-  
-    <div class="container mx-auto px-4">
-      <div class="bg-dark2 text-white rounded-lg shadow-2xl p-6 md:p-12">
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Left Column -->
-          <div>
-            <div class="grid grid-cols-2 gap-6 mb-8">
-              <div class="col-span-1">
-                <img src="img/joeceo.jpg" class="w-full rounded-lg shadow-lg" loading="lazy" alt="Daily Bites CEO">
-              </div>
-              <div class="col-span-1">
-                <div class="space-y-3">
-                  <p><span class="font-bold" style="color: var(--color-primary);">Name: </span><span>Daily Bites</span></p>
-                  <p><span class="font-bold" style="color: var(--color-primary);">Profile: </span><span>CEO</span></p>
-                  <p><span class="font-bold" style="color: var(--color-primary);">Email: </span><span>dailybitesng@gmail.com</span></p>
-                  <p><span class="font-bold" style="color: var(--color-primary);">Phone: </span><span>xxx-xxx-xxx</span></p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Skills/Services -->
-            <div class="space-y-4">
-              <p class="font-bold text-lg" style="color: var(--color-primary);">FREQUENT SERVICES</p>
-              
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Fast foods</span>
-                  <span>85%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="progress-bar h-2 rounded-full" style="width: 85%"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Vegetables</span>
-                  <span>75%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="progress-bar h-2 rounded-full" style="width: 75%"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Spices</span>
-                  <span>50%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="progress-bar h-2 rounded-full" style="width: 50%"></div>
-                </div>
-              </div>
-
-              <div>
-                <div class="flex justify-between mb-1">
-                  <span>Native Dishes</span>
-                  <span>90%</span>
-                </div>
-                <div class="w-full bg-gray-200 rounded-full h-2">
-                  <div class="progress-bar h-2 rounded-full" style="width: 90%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column -->
-          <div>
-            <div class="mb-6">
-              <h5 class="text-2xl font-bold mb-4" style="color: var(--color-primary);">About US</h5>
-            </div>
-            <p class="text-lg mb-4">
-              WE AIM TO BE ONE OF THE LEADING PROVIDERS OF THE FOOD INDUSTRY DELIVERING EXCEPTIONAL VALUE AND UNMATCHED SPEED TO OUR CUSTOMERS
-            </p>
-            <p class="text-lg mb-4">
-              TO REVOLUTIONIZE THE VENDOR INDUSTRY BY OFFERING A SEAMLESS AND EFFICIENT EXPERIENCE BY ENSURING TIMELY AND RELIABLE DELIVERY OF TOP QUALITY FOOD AND PRODUCTS
-            </p>
-            <p class="text-lg">
-              OUR DEDICATED TEAM OF EXPERTS IS ALWAYS READY TO ASSIST YOU, 24/7 YOUR SATISFACTION IS OUR TOP PRIORITY WE COLLABORATE WITH TRUSTED SUPPLIER TO ENSURE CONSISTENT PRODUCT QUALITY AND TIMELY DELIVERY
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-
-  <!-- Counter Section -->
-  
-  <div class="relative py-16 bg-cover bg-center bg-fixed" style="background-image: url(img/dailybites.jpg)">
-    <div class="absolute inset-0" style="background-color: var(--color-overlay);"></div>
-    <div class="relative z-10 container mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-        <div>
-          <div class="flex justify-center mb-4">
-            <span class="ico-circle"><i class="ion-checkmark-round"></i></span>
-          </div>
-          <p class="counter" data-target="450">0</p>
-          <span class="text-sm uppercase tracking-wider">WORKS COMPLETED</span>
-        </div>
-        <div>
-          <div class="flex justify-center mb-4">
-            <span class="ico-circle"><i class="ion-ios-calendar-outline"></i></span>
-          </div>
-          <p class="counter" data-target="15">0</p>
-          <span class="text-sm uppercase tracking-wider">AFFILIATED RESTAURANTS</span>
-        </div>
-        <div>
-          <div class="flex justify-center mb-4">
-            <span class="ico-circle"><i class="ion-ios-people"></i></span>
-          </div>
-          <p class="counter" data-target="550">0</p>
-          <span class="text-sm uppercase tracking-wider">TOTAL CLIENTS</span>
-        </div>
-        <div>
-          <div class="flex justify-center mb-4">
-            <span class="ico-circle"><i class="ion-ribbon-a"></i></span>
-          </div>
-          <p class="counter" data-target="36">0</p>
-          <span class="text-sm uppercase tracking-wider">AWARD WON</span>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+      <div class="text-white">
+        <p class="font-bold text-lg mb-2">Spicy Suya Perfection</p>
+        <div class="flex items-center text-sm">
+          <i class="ion-ios-heart mr-2"></i>
+          <span>1.2K likes</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="p-16 bg-black">
 
+  <!-- Photo 2 -->
+  <div class="group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights3.webp);
+      background-size: cover;
+      background-position: center;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+      <div class="text-white">
+        <p class="font-bold mb-1">Pizza Time</p>
+        <div class="flex items-center text-xs">
+          <i class="ion-ios-heart mr-1"></i>
+          <span>856</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Services/Portfolio Section -->
-  <section id="work" class="pb-16 md:pb-24 relative">
-    <div class="custom-shape-divider-top-1768940382">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
-    </svg>
+  <!-- Photo 3 -->
+  <div class="group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights9.webp);
+      background-size: cover;
+      background-position: center;">
     </div>
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-12">
-        <h3 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-primary);">SERVICES</h3>
-        <p class="text-lg text-gray-300">WE DELIVER TO YOUR DOORSTEP</p>
-        <div class="w-20 h-1 mx-auto mt-4" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));"></div>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service Card 1 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/picfive.jpg" data-lightbox="gallery-mf">
-            <img src="img/picfive.jpg" loading="lazy" alt="Native Dishes" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Native Dishes</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>order now</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/pictwo.jpg" data-lightbox="gallery-mf">
-            <img src="img/pictwo.jpg" loading="lazy" alt="Assorted Dishes" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Assorted Dishes</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>Order now</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Service Card 3 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/picnine.jpg" data-lightbox="gallery-mf">
-            <img src="img/picnine.jpg" loading="lazy" alt="Fast Food" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Fast Food</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>order now</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Service Card 4 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/picthree.jpg" data-lightbox="gallery-mf">
-            <img src="img/picthree.jpg" loading="lazy" alt="Vegetables" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Vegetables</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>order now</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Service Card 5 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/picsix.jpg" data-lightbox="gallery-mf">
-            <img src="img/picsix.jpg" loading="lazy" alt="Breakfast and Brunch" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Breakfast and Brunch</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>order now</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Service Card 6 -->
-        <div class="work-card rounded-lg overflow-hidden shadow-lg">
-          <a href="img/picfour.jpg" data-lightbox="gallery-mf">
-            <img src="img/picfour.jpg" loading="lazy" alt="Whole Food items" class="w-full h-64 object-cover">
-            <div class="work-overlay p-6">
-              <h2 class="text-2xl font-bold text-white mb-2">Whole Food items</h2>
-              <div class="text-gray-300">
-                <span>in stock</span> / <span>order now</span>
-              </div>
-            </div>
-          </a>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+      <div class="text-white">
+        <p class="font-bold mb-1">Fresh Veggies</p>
+        <div class="flex items-center text-xs">
+          <i class="ion-ios-heart mr-1"></i>
+          <span>623</span>
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
 
-  <!-- Testimonials Section -->
-   <section class="relative">
-  <div class="custom-shape-divider-top-1768938175">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M1200,0H0V120H281.94C572.9,116.24,602.45,3.86,602.45,3.86h0S632,116.24,923,120h277Z" class="shape-fill"></path>
-    </svg>
+  <!-- Photo 4 - Wide -->
+  <div class="col-span-2 group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights11.webp);
+      background-size:cover;
+      background-position:center;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+      <div class="text-white">
+        <p class="font-bold text-lg mb-2">Come Join the Fun</p>
+        <div class="flex items-center text-sm">
+          <i class="ion-ios-heart mr-2"></i>
+          <span>2.1K likes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo 5 -->
+  <div class="group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights4.webp);
+      background-size: cover;
+      background-position: center;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+      <div class="text-white">
+        <p class="font-bold mb-1">Breakfast Goals</p>
+        <div class="flex items-center text-xs">
+          <i class="ion-ios-heart mr-1"></i>
+          <span>945</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo 6 - Tall -->
+  <div class="row-span-2 group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-full min-h-[400px] flex items-center justify-center"
+      style="background-image:url(img/insights6.webp);
+      background-size: cover;
+      background-position: center;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+      <div class="text-white">
+        <p class="font-bold text-lg mb-2">Fast Food coz why noty</p>
+        <div class="flex items-center text-sm">
+          <i class="ion-ios-heart mr-2"></i>
+          <span>1.5K likes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo 7 -->
+  <div class="group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights2.webp);
+      background-size: cover;
+      background-position: center;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+      <div class="text-white">
+        <p class="font-bold mb-1">Mac n Cheese</p>
+        <div class="flex items-center text-xs">
+          <i class="ion-ios-heart mr-1"></i>
+          <span>778</span>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="col-span-2 group relative overflow-hidden rounded-2xl cursor-pointer">
+    <div class="h-48 flex items-center justify-center"
+      style="background-image:url(img/insights13.jpg);
+      background-size: cover;
+      background-position:top;">
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+      <div class="text-white">
+        <p class="font-bold text-lg mb-2">Daily Bites Outside</p>
+        <div class="flex items-center text-sm">
+          <i class="ion-ios-heart mr-2"></i>
+          <span>2.1K likes</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-  <div id="reviews" class="relative py-16 bg-cover bg-center bg-fixed min-h-1/3" style="background-image: url(img/newdailybites.webp)">
-    <div class="absolute inset-0" style="background-color: var(--color-primaryo);"></div>
-    <div class="relative z-10 container mx-auto px-4">
-      <div class="max-w-4xl mx-auto h-96">
-        <div id="testimonial-slider">
-          <!-- Testimonial content loaded by JS -->
-        </div>
-      </div>
-    </div>
-  </div>
-  </section>
 
-
-  <!-- Contact Section -->
-  <section class="relative py-16 bg-dark">
-   
-    <div class="absolute inset-0 bg-dark text-light"></div>
-    <div class="relative z-10 container mx-auto px-4">
-      <div class="bg-dark2 text-white rounded-lg shadow-2xl p-6 md:p-12">
-        <div class="grid md:grid-cols-2 gap-12">
-          <!-- Contact Form -->
-          <div>
-            <h5 class="text-2xl font-bold mb-6" style="color: var(--color-primary);">Message Us</h5>
-            <form class="space-y-4" id="contactForm">
-              <div>
-                <input type="text" name="name" id="name" placeholder="Your Name" 
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
-              </div>
-              <div>
-                <input type="email" name="email" id="email" placeholder="Your Email"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
-              </div>
-              <div>
-                <input type="text" name="subject" id="subject" placeholder="Subject"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition">
-              </div>
-              <div>
-                <textarea name="message" rows="5" placeholder="Message"
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition"></textarea>
-              </div>
-              <div>
-                <a href="" target="_blank">
-                  <button type="button" 
-                    class="px-8 py-3 rounded-full text-white font-bold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                    style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
-                    Send Message
-                  </button>
-                </a>
-              </div>
-            </form>
+          <div class="text-center mt-12">
+            <a href="#" class="inline-flex items-center px-8 py-4 rounded-full font-bold text-white gradient-button text-lg">
+              <i class="ion-social-instagram mr-3 text-2xl"></i>
+              Follow @dailybites_ng
+            </a>
           </div>
+        </div>
+      </section>
+      <!-- COPY UNTIL HERE -->
+    </div>
 
-          <!-- Contact Info -->
-          <div>
-            <h5 class="text-2xl font-bold mb-6" style="color: var(--color-primary);">Get in Touch</h5>
-            <p class="text-lg mb-6">
-              We take pride in serving our customers to the best of our abilities to that end feel free to contact us or leave a review. Our Highly trained group of employees are ready to respond to any issue with just the tap of a button so <span style="color: var(--color-primary);" class="font-bold">REACH OUT NOW</span>.
-            </p>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start">
-                <i class="ion-ios-location text-2xl mr-3" style="color: var(--color-primary);"></i>
-                <span>Ihe, Nsukka University road</span>
-              </li>
-              <li class="flex items-start">
-                <i class="ion-ios-telephone text-2xl mr-3" style="color: var(--color-primary);"></i>
-                <span>09039614558</span>
-              </li>
-              <li class="flex items-start">
-                <i class="ion-email text-2xl mr-3" style="color: var(--color-primary);"></i>
-                <span>dailybitesng@gmail.com</span>
-              </li>
-            </ul>
-            <div class="flex space-x-4">
-              <a href="#" class="ico-circle"><i class="ion-social-facebook"></i></a>
-              <a href="#" class="ico-circle"><i class="ion-social-instagram"></i></a>
-              <a href="#" class="ico-circle"><i class="ion-social-twitter"></i></a>
-              <a href="#" class="ico-circle"><i class="ion-social-pinterest"></i></a>
+    <!-- DIVIDER -->
+    
+
+    <!-- ============================================ -->
+    <!-- SECTION 7: NEWSLETTER - SPLIT DESIGN -->
+    <!-- ============================================ -->
+   
+      <!-- COPY FROM HERE -->
+      <section class="py-20 relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-dark2), var(--color-dark));">
+        
+        <div class="container mx-auto px-4">
+          <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left Side - Content -->
+            <div>
+              <div class="inline-block px-4 py-2 rounded-full mb-6 text-sm font-bold" 
+                   style="background: linear-gradient(135deg, var(--color-realpurple), var(--color-accent)); color: white;">
+                EXCLUSIVE PERKS
+              </div>
+              <h3 class="text-4xl md:text-5xl font-bold mb-6 section-title text-white"">Join the VIP Club</h3>
+              <p class="text-xl text-gray-300 mb-8">Get exclusive deals, early access to new menu items, and special discounts delivered to your inbox.</p>
+              
+              <!-- Benefits -->
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start text-white">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-checkmark text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-lg">10% Off First Order</p>
+                    <p class="text-gray-400 text-sm">Instant discount when you sign up</p>
+                  </div>
+                </div>
+                <div class="flex items-start text-white">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-checkmark text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-lg">Weekly Flash Deals</p>
+                    <p class="text-gray-400 text-sm">Exclusive offers sent every Monday</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center mr-4 flex-shrink-0" 
+                       style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));">
+                    <i class="ion-checkmark text-white"></i>
+                  </div>
+                  <div>
+                    <p class="font-bold text-lg text-white">Birthday Surprise</p>
+                    <p class="text-gray-400 text-sm">Free meal on your special day</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="relative">
+              <div class="p-8 md:p-12 rounded-3xl" style="background-color: var(--color-dark2); border: 2px solid var(--color-primary);">
+                <h4 class="text-2xl font-bold mb-6 text-center text-white">Sign Up Now</h4>
+                <form class="space-y-4">
+                  <div>
+                    <input type="text" 
+                           placeholder="Your Name" 
+                           class="w-full px-6 py-4 rounded-xl bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white transition">
+                  </div>
+                  <div>
+                    <input type="email" 
+                           placeholder="Your Email" 
+                           class="w-full px-6 py-4 rounded-xl bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white transition">
+                  </div>
+                  <div>
+                    <input type="tel" 
+                           placeholder="Phone Number" 
+                           class="w-full px-6 py-4 rounded-xl bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white transition">
+                  </div>
+                  <button type="submit" 
+                          class="w-full px-8 py-4 rounded-xl font-bold text-white gradient-button text-lg hover:scale-105 transition-transform">
+                    Get My 10% Off
+                  </button>
+                  <p class="text-xs text-gray-400 text-center">No spam. Unsubscribe anytime.</p>
+                </form>
+              </div>
+              
+              <!-- Floating Badge -->
+              <div class="absolute -top-6 -right-6 w-24 h-24 rounded-full flex flex-col items-center justify-center text-center font-black text-sm rotate-12 glow-hover" 
+                   style="background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)); color: white; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+                <span class="text-2xl">10%</span>
+                <span class="text-xs">OFF</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+      <!-- COPY UNTIL HERE -->
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="bg-black text-white py-8">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; Copyright <strong>RoarHub Nigeria</strong>. All Rights Reserved</p>
-    </div>
-  </footer>
-
-  <!-- Back to Top Button -->
-  <div class="back-to-top" id="backToTop">
-    <i class="fa fa-chevron-up"></i>
   </div>
+  
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+      <div class="container mx-auto px-4 text-center">
+        <p>
+          &copy; Copyright <strong>RoarHub Nigeria</strong>. All Rights Reserved
+        </p>
+      </div>
+    </footer>
 
-  <!-- JavaScript Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+      <p></p>
+    </div>
 
-  <!-- Custom JavaScript -->
-  <script src="src/main.js" defer></script>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-</body>
+    <!-- JavaScript Libraries -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+
+    <!-- Custom JavaScript -->
+    <script src="src/main.js" defer></script>
+  </body>
 </html>

@@ -1,171 +1,157 @@
+document.addEventListener("DOMContentLoaded", () => {
   // Preloader
-    window.addEventListener('load', function() {
-      const preloader = document.getElementById('preloader');
-      if (preloader) {
-        setTimeout(() => {
-          preloader.style.opacity = '0';
-          setTimeout(() => {
-            preloader.style.display = 'none';
-          }, 500);
-        }, 100);
-      }
+  const preloader = document.getElementById("preloader");
+  if (preloader) {
+    setTimeout(() => {
+      preloader.style.opacity = "0";
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 500);
+    }, 100);
+  }
+
+  // Mobile Menu
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mainNav = document.getElementById("mainNav");
+
+  if (mobileMenuBtn && mobileMenu && mainNav) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      mainNav.classList.add("navbar-reduce");
     });
+  }
 
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mainNav = document.getElementById('mainNav');
+  // Smooth scroll
+  document.querySelectorAll(".js-scroll").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
 
-    mobileMenuBtn.addEventListener('click', function() {
-      mobileMenu.classList.toggle('hidden');
-      if (!mainNav.classList.contains('navbar-reduce')) {
-        mainNav.classList.add('navbar-reduce');
-      }
+      const target = document.querySelector(href);
+      if (!target || !mainNav) return;
+
+      e.preventDefault();
+      const targetPosition = target.offsetTop - mainNav.offsetHeight + 5;
+
+      window.scrollTo({ top: targetPosition, behavior: "smooth" });
+      if (mobileMenu) mobileMenu.classList.add("hidden");
     });
+  });
 
-    // Smooth scroll for navigation links
-    document.querySelectorAll('.js-scroll').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href.startsWith('#')) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            const navHeight = mainNav.offsetHeight;
-            const targetPosition = target.offsetTop - navHeight + 5;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: 'smooth'
-            });
-            // Close mobile menu
-            mobileMenu.classList.add('hidden');
-          }
-        }
-      });
-    });
+  // Navbar scroll + back to top
+  const backToTop = document.getElementById("backToTop");
+  window.addEventListener("scroll", () => {
+    if (!mainNav) return;
 
-    // Navbar scroll effect
-    let lastScroll = 0;
-    window.addEventListener('scroll', function() {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > 50) {
-        mainNav.classList.add('navbar-reduce');
-        mainNav.classList.remove('navbar-trans');
-      } else {
-        mainNav.classList.add('navbar-trans');
-        mainNav.classList.remove('navbar-reduce');
-      }
+    const scrollY = window.pageYOffset;
 
-      // Back to top button
-      const backToTop = document.getElementById('backToTop');
-      if (currentScroll > 100) {
-        backToTop.style.display = 'flex';
-      } else {
-        backToTop.style.display = 'none';
-      }
-    });
-
-    // Back to top click
-    document.getElementById('backToTop').addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    // Typed.js for hero text
-    if (document.getElementById('typed-text')) {
-      new Typed('#typed-text', {
-        strings: ['Fresh Foods', 'To Your Doorstep', 'All Round Nsukka'],
-        typeSpeed: 80,
-        backSpeed: 30,
-        backDelay: 1100,
-        loop: true
-      });
+    if (scrollY > 50) {
+      mainNav.classList.add("navbar-reduce");
+      mainNav.classList.remove("navbar-trans");
+    } else {
+      mainNav.classList.add("navbar-trans");
+      mainNav.classList.remove("navbar-reduce");
     }
 
-    // Counter animation
-    function animateCounter(element) {
-      const target = parseInt(element.getAttribute('data-target'));
-      const duration = 2000;
-      const increment = target / (duration / 15);
-      let current = 0;
+    if (backToTop) backToTop.style.display = scrollY > 100 ? "flex" : "none";
+  });
 
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          element.textContent = target;
-          clearInterval(timer);
-        } else {
-          element.textContent = Math.floor(current);
-        }
-      }, 15);
-    }
+  if (backToTop) {
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
-    // Intersection Observer for counters
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+  // Typed.js
+  const typedEl = document.getElementById("typed-text");
+  if (typedEl) {
+    new Typed("#typed-text", {
+      strings: ["Fresh Foods", "To Your Doorstep", "All Round Nsukka"],
+      typeSpeed: 80,
+      backSpeed: 30,
+      backDelay: 1100,
+      loop: true,
+    });
+  }
+
+  // Counter animation
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute("data-target"));
+    const duration = 2000;
+    const increment = target / (duration / 15);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        el.textContent = target;
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(current);
+      }
+    }, 15);
+  }
+
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (
+          entry.isIntersecting &&
+          !entry.target.classList.contains("counted")
+        ) {
           animateCounter(entry.target);
-          entry.target.classList.add('counted');
+          entry.target.classList.add("counted");
         }
       });
-    }, { threshold: 0.5 });
+    },
+    { threshold: 0.5 },
+  );
 
-    document.querySelectorAll('.counter').forEach(counter => {
-      counterObserver.observe(counter);
-    });
+  document
+    .querySelectorAll(".counter")
+    .forEach((el) => counterObserver.observe(el));
 
-    // Testimonial slider (simple auto-rotate)
+  // Testimonial slider
+  const slider = document.getElementById("testimonial-slider");
+  if (slider) {
     let currentTestimonial = 0;
     const testimonials = [
       {
-        img: 'img/REVIEW.webp',
-        name: 'Chukwuemeka',
-        text: 'I recently relocated to a new environment and i have been having trouble eating due to the poorly prepared meals, Until i stumbled upon daily bites now i eat what i like when i like and where i like God bless daily bites'
+        img: "img/REVIEW.webp",
+        name: "Chukwuemeka",
+        text: "I recently relocated to a new environment and I had trouble eating due to poorly prepared meals. Until I found Daily Bites. Now I eat what I like, when I like, and where I like. God bless Daily Bites.",
       },
       {
-        img: 'img/REVIEW2.webp',
-        name: 'Amaka',
-        text: 'Its a great service especially for someone who doesnt want to go far to eat well'
-      }
+        img: "img/REVIEW2.webp",
+        name: "Amaka",
+        text: "It’s a great service, especially for someone who doesn’t want to go far to eat well.",
+      },
     ];
 
     function showTestimonial(index) {
-      const slider = document.getElementById('testimonial-slider');
-      const testimonial = testimonials[index];
+      const t = testimonials[index];
       slider.innerHTML = `
-        <div class="testimonial-slide text-center text-white p-8">
-          <img src="${testimonial.img}" alt="${testimonial.name}" class="w-24 h-24 rounded-full mx-auto mb-4 shadow-lg">
-          <span class="block text-xl font-bold mb-4">${testimonial.name}</span>
-          <p class="text-lg leading-relaxed mb-4">
-            ${testimonial.text}
+        <div class="testimonial-slide
+          h-[260px] md:h-[300px]
+          flex flex-col justify-center items-center
+          text-center text-white p-4 md:p-8
+          overflow-hidden">
+
+          <img src="${t.img}" alt="${t.name}" class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover mb-3 shadow-lg border-2 border-white" />
+          <span class="text-lg md:text-xl font-bold mb-2">${t.name}</span>
+          <p class="text-base md:text-lg leading-relaxed italic mb-3 line-clamp-4 md:line-clamp-5">
+            "${t.text}"
           </p>
-          <i class="fa fa-quote-right text-3xl" style="color: var(--color-primary);"></i>
+          <i class="fa fa-quote-right text-2xl md:text-3xl" style="color: var(--color-primary);"></i>
         </div>
       `;
     }
 
+    showTestimonial(currentTestimonial);
     setInterval(() => {
       currentTestimonial = (currentTestimonial + 1) % testimonials.length;
       showTestimonial(currentTestimonial);
     }, 4000);
-
-    // Paystack Payment
-    /* function payWithPaystack() {
-      let handler = PaystackPop.setup({
-        key: '', // Add your Paystack public key here
-        email: 'customer@example.com',
-        amount: 5000 * 100, // 5000 Naira
-        currency: "NGN",
-        callback: function(response){
-          alert('Payment successful! Reference: ' + response.reference);
-        },
-        onClose: function(){
-          alert('Payment window closed.');
-        }
-      });
-      handler.openIframe();
-    }
-   */
+  }
+});

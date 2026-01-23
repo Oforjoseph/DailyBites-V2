@@ -1,0 +1,2471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Bites Pages</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-primary: #fb8500; /* Orange */
+        --color-primaryo: #0000004e; /* Orange */
+        --color-yellow: #ffb703; /* Green */
+        --color-accent: #ffb703; /* Light Green */
+        --color-dark: #0c0c0c; /* Dark background */
+        --color-dark2: #171717; /* Dark background */
+        --color-light: #ffffff; /* White */
+        --color-accent: #14892a; /* White */
+        --color-secondary: #00a41e; /* White */
+        --color-realpurple: #6a4c93;
+        --color-overlay: rgba(0, 0, 0, 0.489);
+      }
+
+      body {
+        background-color: var(--color-dark);
+        color: var(--color-light);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .gradient-button {
+        background: linear-gradient(
+          135deg,
+          var(--color-secondary),
+          var(--color-accent)
+        );
+        transition: all 0.3s ease;
+      }
+
+      .gradient-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Floating Cart */
+      .floating-cart {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Smooth transitions */
+      .smooth-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .smooth-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Glassmorphism */
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Timeline line */
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(
+          180deg,
+          var(--color-secondary),
+          var(--color-accent)
+        );
+      }
+
+      /* Accordion */
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .accordion-content.active {
+        max-height: 500px;
+      }
+
+      /* Pulse animation */
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .pulse-animate {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* Tab navigation */
+      .tab-btn {
+        padding: 1rem 2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-bottom: 3px solid transparent;
+      }
+
+      .tab-btn.active {
+        border-bottom-color: var(--color-primary);
+        color: var(--color-primary);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Price badge */
+      .price-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: linear-gradient(135deg, var(--color-primary), #ff8833);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+        transform: rotate(15deg);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Sticky sidebar */
+      .sticky-sidebar {
+        position: sticky;
+        top: 100px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+      }
+
+      /* Custom scrollbar */
+      .sticky-sidebar::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .sticky-sidebar::-webkit-scrollbar-track {
+        background: var(--color-dark2);
+      }
+
+      .sticky-sidebar::-webkit-scrollbar-thumb {
+        background: var(--color-primary);
+        border-radius: 3px;
+      }
+
+      /* Checkbox custom */
+      .custom-checkbox {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--color-primary);
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .custom-checkbox:checked {
+        background: linear-gradient(
+          135deg,
+          var(--color-secondary),
+          var(--color-accent)
+        );
+        border-color: var(--color-accent);
+      }
+
+      .custom-checkbox:checked::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body class="p-4 md:p-8">
+    <!-- Tab Navigation -->
+    <div class="max-w-7xl mx-auto mb-8 relative">
+
+  <!-- Hamburger button (mobile only) -->
+  <button
+    class="sm:hidden flex items-center justify-center p-3 rounded-xl mb-4"
+    style="background-color: var(--color-dark2)"
+    onclick="toggleMenu()"
+    aria-label="Toggle navigation"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+         viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+
+  <!-- Navigation -->
+  <nav
+    id="tabNav"
+    class="hidden sm:flex sm:justify-center sm:items-center gap-4 mb-8 p-4 rounded-2xl"
+    style="background-color: var(--color-dark2)"
+  >
+    <button
+      class="tab-btn active text-lg font-bold"
+      onclick="switchTab('menu'); closeMenu();"
+    >
+      <i class="ion-ios-nutrition"></i> Menu/Order
+    </button>
+
+    <button
+      class="tab-btn text-lg font-bold"
+      onclick="switchTab('about'); closeMenu();"
+    >
+      <i class="ion-ios-people"></i> About Us
+    </button>
+
+    <button
+      class="tab-btn text-lg font-bold"
+      onclick="switchTab('faq'); closeMenu();"
+    >
+      <i class="ion-help-circled"></i> FAQ
+    </button>
+
+    <button
+      class="tab-btn text-lg font-bold"
+      onclick="switchTab('track'); closeMenu();"
+    >
+      <i class="ion-location"></i> Track Order
+    </button>
+  </nav>
+
+</div>
+
+
+    <!-- ========================================== -->
+    <!-- TAB 1: MENU/ORDER PAGE -->
+    <!-- ========================================== -->
+   
+        <!-- COPY MENU PAGE FROM HERE -->
+        <section
+          class="min-h-screen"
+          style="background-color: var(--color-dark)"
+        >
+          <!-- Hero Banner -->
+          <div
+            class="relative h-64 mb-8 rounded-3xl overflow-hidden"
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--color-primary),
+                #ff8833
+              );
+            "
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center text-center p-8"
+            >
+              <div>
+                <h1 class="text-5xl md:text-6xl font-black text-white mb-4">
+                  Our Menu
+                </h1>
+                <p class="text-2xl text-white/90">
+                  Fresh, Hot, & Ready to Order
+                </p>
+              </div>
+            </div>
+            <div
+              class="absolute top-4 right-4 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white font-bold"
+            >
+              <i class="ion-pricetag"></i> 20% OFF Native Dishes
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-4 gap-8">
+            <!-- Sidebar Filters -->
+            <aside class="lg:col-span-1">
+              <div class="sticky-sidebar space-y-6">
+                <!-- Search -->
+                <div
+                  class="p-6 rounded-2xl"
+                  style="background-color: var(--color-dark2)"
+                >
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    style="color: var(--color-primary)"
+                  >
+                    <i class="ion-ios-search"></i> Search
+                  </h3>
+                  <input
+                    type="text"
+                    id="menuSearch"
+                    placeholder="Search dishes..."
+                    class="w-full px-4 py-3 rounded-xl bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white"
+                    onkeyup="filterMenu()"
+                  />
+                </div>
+
+                <!-- Categories -->
+                <div
+                  class="p-6 rounded-2xl"
+                  style="background-color: var(--color-dark2)"
+                >
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    style="color: var(--color-primary)"
+                  >
+                    <i class="ion-ios-list"></i> Categories
+                  </h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        checked
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >All Items (24)</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-category="native"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Native Dishes (8)</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-category="fastfood"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Fast Food (6)</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-category="continental"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Continental (5)</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-category="breakfast"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Breakfast (5)</span
+                      >
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Price Range -->
+                <div
+                  class="p-6 rounded-2xl"
+                  style="background-color: var(--color-dark2)"
+                >
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    style="color: var(--color-primary)"
+                  >
+                    <i class="ion-cash"></i> Price Range
+                  </h3>
+                  <div class="space-y-4">
+                    <div class="flex justify-between text-sm text-gray-400">
+                      <span>₦0</span>
+                      <span id="priceValue">₦5,000</span>
+                    </div>
+                    <input
+                      type="range"
+                      id="priceRange"
+                      min="0"
+                      max="10000"
+                      value="5000"
+                      class="w-full"
+                      oninput="updatePriceFilter(this.value)"
+                    />
+                  </div>
+                </div>
+
+                <!-- Dietary -->
+                <div
+                  class="p-6 rounded-2xl"
+                  style="background-color: var(--color-dark2)"
+                >
+                  <h3
+                    class="text-xl font-bold mb-4"
+                    style="color: var(--color-primary)"
+                  >
+                    <i class="ion-leaf"></i> Dietary
+                  </h3>
+                  <div class="space-y-3">
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-dietary="vegetarian"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Vegetarian</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-dietary="spicy"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Spicy</span
+                      >
+                    </label>
+                    <label class="flex items-center cursor-pointer group">
+                      <input
+                        type="checkbox"
+                        class="custom-checkbox"
+                        data-dietary="halal"
+                        onchange="filterMenu()"
+                      />
+                      <span class="ml-3 group-hover:text-orange-500 transition"
+                        >Halal</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <!-- Main Menu Grid -->
+            <main class="lg:col-span-3">
+              <!-- Sort & View Options -->
+              <div
+                class="flex flex-wrap justify-between items-center mb-6 p-4 rounded-2xl"
+                style="background-color: var(--color-dark2)"
+              >
+                <div class="flex items-center gap-4">
+                  <span class="text-gray-400">Sort by:</span>
+                  <select
+                    class="px-4 py-2 rounded-lg bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white"
+                  >
+                    <option>Popular</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest</option>
+                  </select>
+                </div>
+                <div class="text-gray-400">
+                  <span id="itemCount">24</span> items found
+                </div>
+              </div>
+
+              <!-- Food Items Grid -->
+              <div
+                id="menuGrid"
+                class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+              >
+                <!-- Food Card 1 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="native"
+                  data-price="3500"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦3,500</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span
+                        class="px-2 py-1 rounded-full text-xs font-bold"
+                        style="
+                          background: linear-gradient(
+                            135deg,
+                            var(--color-secondary),
+                            var(--color-primary)
+                          );
+                          color: white;
+                        "
+                      >
+                        POPULAR
+                      </span>
+                      <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Jollof Rice Special</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Party jollof with grilled chicken, fried plantain, and
+                      coleslaw
+                    </p>
+
+                    <!-- Customization -->
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Spice Level:</span>
+                        <select
+                          class="px-3 py-1 rounded-lg bg-black/50 border border-gray-600 text-white text-xs"
+                        >
+                          <option>Mild</option>
+                          <option>Medium</option>
+                          <option>Hot</option>
+                          <option>Extra Hot 🔥</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('Jollof Rice Special', 3500)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Food Card 2 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="native"
+                  data-price="2500"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦2,500</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-yellow-400">★★★★☆</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fried Rice Combo</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Tasty fried rice with chicken, plantain, and moin moin
+                    </p>
+
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Protein:</span>
+                        <select
+                          class="px-3 py-1 rounded-lg bg-black/50 border border-gray-600 text-white text-xs"
+                        >
+                          <option>Chicken</option>
+                          <option>Turkey (+₦500)</option>
+                          <option>Fish (+₦300)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('Fried Rice Combo', 2500)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Food Card 3 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="native"
+                  data-price="2000"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦2,000</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Amala & Ewedu</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Smooth amala with ewedu soup and assorted meat
+                    </p>
+
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Portion:</span>
+                        <select
+                          class="px-3 py-1 rounded-lg bg-black/50 border border-gray-600 text-white text-xs"
+                        >
+                          <option>Regular</option>
+                          <option>Large (+₦500)</option>
+                          <option>Family Size (+₦1500)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('Amala & Ewedu', 2000)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Food Card 4 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="fastfood"
+                  data-price="1500"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦1,500</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span
+                        class="px-2 py-1 rounded-full text-xs font-bold"
+                        style="
+                          background: linear-gradient(
+                            135deg,
+                            var(--color-secondary),
+                            var(--color-accent)
+                          );
+                          color: white;
+                        "
+                      >
+                        BESTSELLER
+                      </span>
+                      <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Shawarma</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Loaded chicken or beef shawarma with fresh veggies
+                    </p>
+
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Size:</span>
+                        <select
+                          class="px-3 py-1 rounded-lg bg-black/50 border border-gray-600 text-white text-xs"
+                        >
+                          <option>Regular</option>
+                          <option>Large (+₦500)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('Shawarma', 1500)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Food Card 5 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="continental"
+                  data-price="4000"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦4,000</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-yellow-400">★★★★☆</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Pasta Carbonara</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Creamy pasta with bacon, parmesan, and garlic bread
+                    </p>
+
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Extras:</span>
+                        <label class="flex items-center text-xs">
+                          <input type="checkbox" class="mr-2" />
+                          <span>Extra Cheese (+₦300)</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('Pasta Carbonara', 4000)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Food Card 6 -->
+                <div
+                  class="menu-item relative rounded-2xl overflow-hidden smooth-hover group"
+                  style="background-color: var(--color-dark2)"
+                  data-category="breakfast"
+                  data-price="1800"
+                >
+                  <div
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                  >
+                    <i
+                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
+                      style="color: var(--color-primary)"
+                    ></i>
+                  </div>
+                  <div class="price-badge">₦1,800</div>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 mb-2">
+                      <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">English Breakfast</h3>
+                    <p class="text-sm text-gray-400 mb-4">
+                      Eggs, sausages, baked beans, toast, and tea/coffee
+                    </p>
+
+                    <div class="mb-4 space-y-2">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-gray-400">Beverage:</span>
+                        <select
+                          class="px-3 py-1 rounded-lg bg-black/50 border border-gray-600 text-white text-xs"
+                        >
+                          <option>Tea</option>
+                          <option>Coffee</option>
+                          <option>Orange Juice</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <button
+                      onclick="addToCart('English Breakfast', 1800)"
+                      class="w-full py-3 rounded-xl font-bold text-white gradient-button flex items-center justify-center gap-2 group"
+                    >
+                      <i class="ion-android-cart"></i>
+                      <span>Add to Cart</span>
+                      <i
+                        class="ion-arrow-right-c group-hover:translate-x-2 transition-transform"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </main>
+          </div>
+
+          <!-- Floating Cart Button -->
+          <div class="floating-cart">
+            <button
+              onclick="toggleCart()"
+              class="relative w-16 h-16 rounded-full flex items-center justify-center text-2xl text-white shadow-2xl gradient-button"
+            >
+              <i class="ion-android-cart"></i>
+              <span
+                id="cartCount"
+                class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-xs font-bold"
+              >
+                0
+              </span>
+            </button>
+          </div>
+
+          <!-- Cart Sidebar (Hidden by default) -->
+          <div
+            id="cartSidebar"
+            class="fixed top-0 right-0 w-full md:w-96 h-full z-50 transform translate-x-full transition-transform duration-300"
+            style="background-color: var(--color-dark2)"
+          >
+            <div class="p-6 h-full flex flex-col">
+              <div class="flex justify-between items-center mb-6">
+                <h3
+                  class="text-2xl font-bold"
+                  style="color: var(--color-primary)"
+                >
+                  Your Cart
+                </h3>
+                <button
+                  onclick="toggleCart()"
+                  class="text-3xl hover:text-red-500 transition"
+                >
+                  <i class="ion-close"></i>
+                </button>
+              </div>
+
+              <div id="cartItems" class="flex-1 overflow-y-auto mb-6">
+                <p class="text-center text-gray-400 mt-20">
+                  Your cart is empty
+                </p>
+              </div>
+
+              <div class="border-t border-gray-700 pt-4">
+                <div class="flex justify-between text-xl font-bold mb-4">
+                  <span>Total:</span>
+                  <span id="cartTotal" style="color: var(--color-primary)"
+                    >₦0</span
+                  >
+                </div>
+                <button
+                  class="w-full py-4 rounded-xl font-bold text-white gradient-button text-lg"
+                >
+                  Proceed to Checkout
+                  <i class="ion-arrow-right-c ml-2"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cart Overlay -->
+          <div
+            id="cartOverlay"
+            class="fixed inset-0 bg-black/80 z-40 hidden"
+            onclick="toggleCart()"
+          ></div>
+        </section>
+        <!-- COPY MENU PAGE UNTIL HERE -->
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: ABOUT US PAGE -->
+    <!-- ========================================== -->
+    <div id="about-tab" class="tab-content">
+      <div class="max-w-7xl mx-auto mb-20">
+        <div
+          class="text-center mb-8 p-6 rounded-2xl"
+          style="background-color: var(--color-dark2)"
+        >
+          <h2
+            class="text-4xl font-bold mb-4"
+            style="color: var(--color-primary)"
+          >
+            👥 ABOUT US PAGE
+          </h2>
+          <p class="text-gray-400">Our story, mission, team, and values</p>
+        </div>
+
+        <!-- COPY ABOUT PAGE FROM HERE -->
+        <section style="background-color: var(--color-dark)">
+          <!-- Hero Section -->
+          <div
+            class="relative mb-16 rounded-3xl overflow-hidden h-96"
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--color-dark2),
+                var(--color-dark)
+              );
+            "
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center text-center p-8"
+            >
+              <div>
+                <h1
+                  class="text-6xl md:text-7xl font-black mb-6"
+                  style="color: var(--color-primary)"
+                >
+                  Our Story
+                </h1>
+                <p class="text-2xl text-gray-300 max-w-3xl mx-auto">
+                  From a small vendor to Nsukka's favorite food delivery service
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission & Vision -->
+          <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <div
+              class="p-10 rounded-3xl smooth-hover relative overflow-hidden"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--color-primary),
+                  #ff8833
+                );
+              "
+            >
+              <div
+                class="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/10 -mr-20 -mt-20"
+              ></div>
+              <i class="ion-ios-lightbulb text-7xl text-white/30 mb-6"></i>
+              <h3 class="text-3xl font-black text-white mb-4">Our Mission</h3>
+              <p class="text-lg text-white/90 leading-relaxed">
+                To revolutionize food delivery in Nsukka by providing fresh,
+                authentic Nigerian meals with unmatched speed and reliability.
+                We believe everyone deserves access to quality, home-cooked food
+                without the hassle.
+              </p>
+            </div>
+
+            <div
+              class="p-10 rounded-3xl smooth-hover relative overflow-hidden"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--color-secondary),
+                  var(--color-accent)
+                );
+              "
+            >
+              <div
+                class="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/10 -mr-20 -mt-20"
+              ></div>
+              <i class="ion-ios-eye text-7xl text-white/30 mb-6"></i>
+              <h3 class="text-3xl font-black text-white mb-4">Our Vision</h3>
+              <p class="text-lg text-white/90 leading-relaxed">
+                To become the leading food delivery platform across Nigerian
+                universities, setting the standard for quality, speed, and
+                customer satisfaction. We're building a food revolution, one
+                delivery at a time.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div
+            class="mb-16 p-10 rounded-3xl"
+            style="background-color: var(--color-dark2)"
+          >
+            <h2
+              class="text-4xl font-bold text-center mb-12"
+              style="color: var(--color-primary)"
+            >
+              Our Journey
+            </h2>
+
+            <div class="relative max-w-4xl mx-auto">
+              <div class="timeline-line hidden md:block"></div>
+
+              <div class="space-y-12">
+                <!-- Timeline Item 1 -->
+                <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                  <div class="md:text-right">
+                    <div
+                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
+                    >
+                      <span class="font-bold text-white">2022</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">The Beginning</h4>
+                    <p class="text-gray-400">
+                      Started as a small food vendor serving UNN students from a
+                      single location
+                    </p>
+                  </div>
+                  <div class="flex justify-center">
+                    <div
+                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
+                      style="
+                        background: linear-gradient(
+                          135deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    >
+                      🌱
+                    </div>
+                  </div>
+                  <div class="md:block hidden"></div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                  <div class="md:block hidden"></div>
+                  <div class="flex justify-center md:order-first">
+                    <div
+                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
+                      style="
+                        background: linear-gradient(
+                          135deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    >
+                      🚀
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
+                    >
+                      <span class="font-bold text-white">2023</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">Expansion</h4>
+                    <p class="text-gray-400">
+                      Launched delivery service and expanded menu to include 50+
+                      dishes
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                  <div class="md:text-right">
+                    <div
+                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
+                    >
+                      <span class="font-bold text-white">2024</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">Going Digital</h4>
+                    <p class="text-gray-400">
+                      Launched online ordering platform and mobile app for
+                      seamless experience
+                    </p>
+                  </div>
+                  <div class="flex justify-center">
+                    <div
+                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
+                      style="
+                        background: linear-gradient(
+                          135deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    >
+                      📱
+                    </div>
+                  </div>
+                  <div class="md:block hidden"></div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                  <div class="md:block hidden"></div>
+                  <div class="flex justify-center md:order-first">
+                    <div
+                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
+                      style="
+                        background: linear-gradient(
+                          135deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    >
+                      🏆
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
+                    >
+                      <span class="font-bold text-white">2025</span>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-2">Market Leader</h4>
+                    <p class="text-gray-400">
+                      Serving 500+ customers daily, #1 food delivery service in
+                      Nsukka
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Counter -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div
+              class="text-center p-8 rounded-2xl smooth-hover"
+              style="background-color: var(--color-dark2)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--color-primary)"
+              >
+                550+
+              </div>
+              <div class="text-gray-400 text-lg">Happy Customers</div>
+            </div>
+            <div
+              class="text-center p-8 rounded-2xl smooth-hover"
+              style="background-color: var(--color-dark2)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--color-primary)"
+              >
+                450+
+              </div>
+              <div class="text-gray-400 text-lg">Orders Completed</div>
+            </div>
+            <div
+              class="text-center p-8 rounded-2xl smooth-hover"
+              style="background-color: var(--color-dark2)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--color-primary)"
+              >
+                15+
+              </div>
+              <div class="text-gray-400 text-lg">Restaurant Partners</div>
+            </div>
+            <div
+              class="text-center p-8 rounded-2xl smooth-hover"
+              style="background-color: var(--color-dark2)"
+            >
+              <div
+                class="text-5xl font-black mb-3"
+                style="color: var(--color-primary)"
+              >
+                24/7
+              </div>
+              <div class="text-gray-400 text-lg">Service Hours</div>
+            </div>
+          </div>
+
+          <!-- Core Values -->
+          <div class="mb-16">
+            <h2
+              class="text-4xl font-bold text-center mb-12"
+              style="color: var(--color-primary)"
+            >
+              Our Values
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-6">
+              <div
+                class="p-8 rounded-2xl group"
+                style="
+                  background-color: var(--color-dark2);
+                  transition: all 0.3s ease;
+                "
+              >
+                <div
+                  class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto group-hover:scale-110 transition-transform"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--color-secondary),
+                      var(--color-accent)
+                    );
+                  "
+                >
+                  ⚡
+                </div>
+                <h3 class="text-2xl font-bold text-center mb-3">Speed</h3>
+                <p class="text-gray-400 text-center">
+                  30-minute delivery guarantee. Fast service without
+                  compromising quality.
+                </p>
+              </div>
+
+              <div
+                class="p-8 rounded-2xl group"
+                style="
+                  background-color: var(--color-dark2);
+                  transition: all 0.3s ease;
+                "
+              >
+                <div
+                  class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto group-hover:scale-110 transition-transform"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--color-secondary),
+                      var(--color-accent)
+                    );
+                  "
+                >
+                  🌿
+                </div>
+                <h3 class="text-2xl font-bold text-center mb-3">Freshness</h3>
+                <p class="text-gray-400 text-center">
+                  Fresh ingredients daily. Nothing frozen, nothing compromised.
+                </p>
+              </div>
+
+              <div
+                class="p-8 rounded-2xl group"
+                style="
+                  background-color: var(--color-dark2);
+                  transition: all 0.3s ease;
+                "
+              >
+                <div
+                  class="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-6 mx-auto group-hover:scale-110 transition-transform"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      var(--color-secondary),
+                      var(--color-accent)
+                    );
+                  "
+                >
+                  ❤️
+                </div>
+                <h3 class="text-2xl font-bold text-center mb-3">
+                  Customer First
+                </h3>
+                <p class="text-gray-400 text-center">
+                  Your satisfaction is our priority. Always listening, always
+                  improving.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Section -->
+          <div
+            class="p-10 rounded-3xl"
+            style="background-color: var(--color-dark2)"
+          >
+            <h2
+              class="text-4xl font-bold text-center mb-4"
+              style="color: var(--color-primary)"
+            >
+              Meet Our Team
+            </h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">
+              The people making it happen every day
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+              <!-- Team Member 1 -->
+              <div class="text-center smooth-hover">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/joeceo.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">Joseph Ofor</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Founder & CEO
+                </p>
+                <p class="text-sm text-gray-400">
+                  Food enthusiast with 5+ years experience in hospitality
+                </p>
+              </div>
+
+              <!-- Team Member 2 -->
+              <div class="text-center smooth-hover">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/125982.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">James Bach</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Operations Manager
+                </p>
+                <p class="text-sm text-gray-400">
+                  Ensures smooth operations and timely deliveries
+                </p>
+              </div>
+
+              <!-- Team Member 3 -->
+              <div class="text-center smooth-hover">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/2148723257.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">Chidi Okafor</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Head Chef
+                </p>
+                <p class="text-sm text-gray-400">
+                  Master chef crafting authentic Nigerian delicacies
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- COPY ABOUT PAGE UNTIL HERE -->
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: FAQ PAGE -->
+    <!-- ========================================== -->
+    <div id="faq-tab" class="tab-content">
+      <div class="max-w-7xl mx-auto mb-20">
+        <div
+          class="text-center mb-8 p-6 rounded-2xl"
+          style="background-color: var(--color-dark2)"
+        >
+          <h2
+            class="text-4xl font-bold mb-4"
+            style="color: var(--color-primary)"
+          >
+            ❓ FAQ PAGE
+          </h2>
+          <p class="text-gray-400">
+            Frequently asked questions with search and categories
+          </p>
+        </div>
+
+        <!-- COPY FAQ PAGE FROM HERE -->
+        <section style="background-color: var(--color-dark)">
+          <!-- Hero -->
+          <div class="text-center mb-12">
+            <h1
+              class="text-5xl md:text-6xl font-black mb-6"
+              style="color: var(--color-primary)"
+            >
+              Got Questions?
+            </h1>
+            <p class="text-2xl text-gray-300 mb-8">We've got answers!</p>
+
+            <!-- FAQ Search -->
+            <div class="max-w-2xl mx-auto">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="faqSearch"
+                  placeholder="Search your question..."
+                  class="w-full px-6 py-4 pr-12 rounded-full text-lg bg-opacity-10 border-2 focus:outline-none text-white"
+                  style="
+                    background-color: var(--color-dark2);
+                    border-color: var(--color-primary);
+                  "
+                  onkeyup="searchFAQ()"
+                />
+                <i
+                  class="ion-ios-search absolute right-6 top-1/2 transform -translate-y-1/2 text-2xl"
+                  style="color: var(--color-primary)"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Categories -->
+          <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+              onclick="filterFAQ('all')"
+              class="faq-category-btn active px-6 py-3 rounded-full font-bold transition-all"
+              style="background-color: var(--color-dark2)"
+            >
+              All Questions
+            </button>
+            <button
+              onclick="filterFAQ('ordering')"
+              class="faq-category-btn px-6 py-3 rounded-full font-bold transition-all"
+              style="background-color: var(--color-dark2)"
+            >
+              Ordering
+            </button>
+            <button
+              onclick="filterFAQ('delivery')"
+              class="faq-category-btn px-6 py-3 rounded-full font-bold transition-all"
+              style="background-color: var(--color-dark2)"
+            >
+              Delivery
+            </button>
+            <button
+              onclick="filterFAQ('payment')"
+              class="faq-category-btn px-6 py-3 rounded-full font-bold transition-all"
+              style="background-color: var(--color-dark2)"
+            >
+              Payment
+            </button>
+            <button
+              onclick="filterFAQ('account')"
+              class="faq-category-btn px-6 py-3 rounded-full font-bold transition-all"
+              style="background-color: var(--color-dark2)"
+            >
+              Account
+            </button>
+          </div>
+
+          <!-- FAQ Items -->
+          <div class="max-w-4xl mx-auto space-y-4">
+            <!-- FAQ Item 1 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="ordering"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >How do I place an order?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Placing an order is simple! Browse our menu, select your
+                  desired items, customize as needed (spice level, portions,
+                  etc.), add to cart, and proceed to checkout. You can pay with
+                  card, bank transfer, or cash on delivery.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="delivery"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >How long does delivery take?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  We guarantee delivery within 30 minutes or less for most areas
+                  in Nsukka. UNN campus orders typically arrive in 15-20
+                  minutes, while town areas take 20-25 minutes. You can track
+                  your order in real-time from our Track Order page.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="delivery"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >Do you deliver to my area?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  We deliver to all UNN campus areas, Nsukka town, and
+                  surrounding environs including Ibagwa and Opi. If you're
+                  unsure about your location, contact us on WhatsApp or check
+                  our delivery zones on the homepage.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="payment"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >What payment methods do you accept?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  We accept multiple payment methods: Card payments (Visa,
+                  Mastercard, Verve), Bank transfer, USSD, and Cash on Delivery.
+                  All online payments are secured with Paystack for your safety.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="ordering"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >Can I customize my order?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Absolutely! You can customize spice levels, portion sizes,
+                  protein choices, and add extras to most dishes. Just use the
+                  customization options when adding items to your cart.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="ordering"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >What's your minimum order amount?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Our minimum order is ₦1,000. Orders above ₦5,000 qualify for
+                  free delivery!
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="delivery"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >Is there a delivery fee?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Delivery fees vary by location: ₦200 for UNN campus, ₦300-500
+                  for Nsukka town, and ₦500-800 for environs. Orders above
+                  ₦5,000 get FREE delivery!
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="account"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >Do I need to create an account?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  No, you can order as a guest! However, creating an account
+                  gives you order history, saved addresses, exclusive deals, and
+                  birthday surprises.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="payment"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4">Can I get a refund?</span>
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Yes! If you're not satisfied with your order, contact us
+                  within 30 minutes of delivery. We'll either send a replacement
+                  or process a full refund. Customer satisfaction is our
+                  priority.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 10 -->
+            <div
+              class="faq-item rounded-2xl overflow-hidden"
+              style="background-color: var(--color-dark2)"
+              data-category="account"
+            >
+              <button
+                onclick="toggleAccordion(this)"
+                class="w-full p-6 flex justify-between items-center text-left hover:bg-opacity-80 transition"
+              >
+                <span class="text-xl font-bold pr-4"
+                  >How do I contact customer service?</span
+                >
+                <i
+                  class="ion-ios-plus text-3xl flex-shrink-0 accordion-icon transition-transform"
+                  style="color: var(--color-primary)"
+                ></i>
+              </button>
+              <div class="accordion-content px-6 pb-6">
+                <p class="text-gray-300 leading-relaxed">
+                  Reach us via WhatsApp at 09039614558, email at
+                  dailybitesng@gmail.com, or use the contact form on our
+                  website. We're available 24/7!
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Still Have Questions CTA -->
+          <div
+            class="mt-16 p-10 rounded-3xl text-center"
+            style="
+              background: linear-gradient(
+                135deg,
+                var(--color-primary),
+                #ff8833
+              );
+            "
+          >
+            <h2 class="text-3xl font-bold text-white mb-4">
+              Still have questions?
+            </h2>
+            <p class="text-xl text-white/90 mb-6">
+              Our team is here to help 24/7
+            </p>
+            <a
+              href="https://wa.link/h84a2s"
+              target="_blank"
+              class="inline-block px-8 py-4 rounded-full bg-white font-bold text-lg hover:scale-105 transition-transform"
+              style="color: var(--color-primary)"
+            >
+              <i class="ion-social-whatsapp mr-2"></i>
+              Chat with Us
+            </a>
+          </div>
+        </section>
+        <!-- COPY FAQ PAGE UNTIL HERE -->
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: TRACK ORDER PAGE -->
+    <!-- ========================================== -->
+    <div id="track-tab" class="tab-content">
+      <div class="max-w-7xl mx-auto mb-20">
+        <div
+          class="text-center mb-8 p-6 rounded-2xl"
+          style="background-color: var(--color-dark2)"
+        >
+          <h2
+            class="text-4xl font-bold mb-4"
+            style="color: var(--color-primary)"
+          >
+            📍 TRACK ORDER PAGE
+          </h2>
+          <p class="text-gray-400">
+            Real-time order tracking with timeline and delivery info
+          </p>
+        </div>
+
+        <!-- COPY TRACK ORDER PAGE FROM HERE -->
+        <section style="background-color: var(--color-dark)">
+          <!-- Hero -->
+          <div class="text-center mb-12">
+            <h1
+              class="text-5xl md:text-6xl font-black mb-6"
+              style="color: var(--color-primary)"
+            >
+              Track Your Order
+            </h1>
+            <p class="text-2xl text-gray-300">Where's my food?</p>
+          </div>
+
+          <!-- Order ID Input -->
+          <div class="max-w-2xl mx-auto mb-12">
+            <div
+              class="p-8 rounded-3xl"
+              style="background-color: var(--color-dark2)"
+            >
+              <h3 class="text-2xl font-bold mb-6 text-center">
+                Enter Your Order ID
+              </h3>
+              <div class="flex gap-4">
+                <input
+                  type="text"
+                  id="orderIdInput"
+                  placeholder="e.g., DB12345"
+                  class="flex-1 px-6 py-4 rounded-xl bg-black/50 border border-gray-600 focus:outline-none focus:border-orange-500 text-white text-lg"
+                />
+                <button
+                  onclick="trackOrder()"
+                  class="px-8 py-4 rounded-xl font-bold text-white gradient-button text-lg"
+                >
+                  Track
+                </button>
+              </div>
+              <p class="text-sm text-gray-400 text-center mt-4">
+                Find your Order ID in your confirmation email or SMS
+              </p>
+            </div>
+          </div>
+
+          <!-- Order Tracking Result (Hidden by default) -->
+          <div id="trackingResult" class="max-w-4xl mx-auto hidden">
+            <!-- Order Summary Card -->
+            <div class="grid md:grid-cols-3 gap-6 mb-8">
+              <div
+                class="p-6 rounded-2xl text-center smooth-hover"
+                style="background-color: var(--color-dark2)"
+              >
+                <i
+                  class="ion-ios-clock text-4xl mb-3"
+                  style="color: var(--color-primary)"
+                ></i>
+                <div
+                  class="text-3xl font-bold mb-2"
+                  style="color: var(--color-primary)"
+                >
+                  18 mins
+                </div>
+                <div class="text-gray-400">Estimated Time</div>
+              </div>
+
+              <div
+                class="p-6 rounded-2xl text-center smooth-hover"
+                style="background-color: var(--color-dark2)"
+              >
+                <i
+                  class="ion-android-bicycle text-4xl mb-3"
+                  style="color: var(--color-primary)"
+                ></i>
+                <div
+                  class="text-3xl font-bold mb-2"
+                  style="color: var(--color-primary)"
+                >
+                  On Route
+                </div>
+                <div class="text-gray-400">Order Status</div>
+              </div>
+
+              <div
+                class="p-6 rounded-2xl text-center smooth-hover"
+                style="background-color: var(--color-dark2)"
+              >
+                <i
+                  class="ion-cash text-4xl mb-3"
+                  style="color: var(--color-primary)"
+                ></i>
+                <div
+                  class="text-3xl font-bold mb-2"
+                  style="color: var(--color-primary)"
+                >
+                  ₦3,500
+                </div>
+                <div class="text-gray-400">Total Amount</div>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div
+              class="p-8 rounded-3xl mb-8"
+              style="background-color: var(--color-dark2)"
+            >
+              <h3
+                class="text-2xl font-bold mb-8"
+                style="color: var(--color-primary)"
+              >
+                Order Progress
+              </h3>
+
+              <div class="space-y-8">
+                <!-- Step 1 - Completed -->
+                <div class="flex items-start gap-6">
+                  <div class="flex flex-col items-center">
+                    <div
+                      class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 gradient-button"
+                    >
+                      <i class="ion-checkmark text-white text-2xl"></i>
+                    </div>
+                    <div
+                      class="w-1 h-full min-h-[60px]"
+                      style="
+                        background: linear-gradient(
+                          180deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    ></div>
+                  </div>
+                  <div class="flex-1 pb-8">
+                    <h4 class="text-xl font-bold mb-2">Order Confirmed</h4>
+                    <p class="text-gray-400 mb-1">
+                      Your order has been received and confirmed
+                    </p>
+                    <p class="text-sm" style="color: var(--color-primary)">
+                      Completed at 2:30 PM
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Step 2 - Completed -->
+                <div class="flex items-start gap-6">
+                  <div class="flex flex-col items-center">
+                    <div
+                      class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 gradient-button"
+                    >
+                      <i class="ion-checkmark text-white text-2xl"></i>
+                    </div>
+                    <div
+                      class="w-1 h-full min-h-[60px]"
+                      style="
+                        background: linear-gradient(
+                          180deg,
+                          var(--color-secondary),
+                          var(--color-accent)
+                        );
+                      "
+                    ></div>
+                  </div>
+                  <div class="flex-1 pb-8">
+                    <h4 class="text-xl font-bold mb-2">Preparing Food</h4>
+                    <p class="text-gray-400 mb-1">
+                      Our chefs are preparing your delicious meal
+                    </p>
+                    <p class="text-sm" style="color: var(--color-primary)">
+                      Completed at 2:35 PM
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Step 3 - Active -->
+                <div class="flex items-start gap-6">
+                  <div class="flex flex-col items-center">
+                    <div
+                      class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 gradient-button pulse-animate"
+                    >
+                      <i class="ion-android-bicycle text-white text-2xl"></i>
+                    </div>
+                    <div class="w-1 h-full min-h-[60px] bg-gray-700"></div>
+                  </div>
+                  <div class="flex-1 pb-8">
+                    <h4 class="text-xl font-bold mb-2">Out for Delivery</h4>
+                    <p class="text-gray-400 mb-1">
+                      Your rider is on the way to your location
+                    </p>
+                    <p class="text-sm" style="color: var(--color-primary)">
+                      In Progress - ETA 18 mins
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Step 4 - Pending -->
+                <div class="flex items-start gap-6">
+                  <div class="flex flex-col items-center">
+                    <div
+                      class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-gray-700"
+                    >
+                      <i class="ion-checkmark text-gray-500 text-2xl"></i>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-xl font-bold mb-2 text-gray-500">
+                      Delivered
+                    </h4>
+                    <p class="text-gray-600">
+                      Your food will be delivered soon
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rider Information -->
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <!-- Rider Details -->
+              <div
+                class="p-8 rounded-3xl"
+                style="background-color: var(--color-dark2)"
+              >
+                <h3
+                  class="text-2xl font-bold mb-6"
+                  style="color: var(--color-primary)"
+                >
+                  Your Delivery Rider
+                </h3>
+
+                <div class="flex items-center gap-4 mb-6">
+                  <div
+                    class="w-20 h-20 rounded-full flex items-center justify-center text-4xl gradient-button"
+                  >
+                    👨‍🦱
+                  </div>
+                  <div>
+                    <h4 class="text-xl font-bold">Emeka Johnson</h4>
+                    <div class="flex items-center text-yellow-400">
+                      <span>★★★★★</span>
+                      <span class="text-gray-400 ml-2">(4.9)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-3">
+                  <div class="flex items-center gap-3">
+                    <i
+                      class="ion-android-bicycle text-2xl"
+                      style="color: var(--color-primary)"
+                    ></i>
+                    <span class="text-gray-300">Bike: Honda CG 125</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i
+                      class="ion-ios-telephone text-2xl"
+                      style="color: var(--color-primary)"
+                    ></i>
+                    <span class="text-gray-300">0803-XXX-1234</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i
+                      class="ion-checkmark-circled text-2xl"
+                      style="color: var(--color-accent)"
+                    ></i>
+                    <span class="text-gray-300"
+                      >450+ successful deliveries</span
+                    >
+                  </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                  <button
+                    class="px-4 py-3 rounded-xl border-2 font-bold hover:scale-105 transition-transform"
+                    style="
+                      border-color: var(--color-primary);
+                      color: var(--color-primary);
+                    "
+                  >
+                    <i class="ion-ios-telephone mr-2"></i>
+                    Call Rider
+                  </button>
+                  <button
+                    class="px-4 py-3 rounded-xl border-2 font-bold hover:scale-105 transition-transform"
+                    style="
+                      border-color: var(--color-primary);
+                      color: var(--color-primary);
+                    "
+                  >
+                    <i class="ion-chatbubbles mr-2"></i>
+                    Message
+                  </button>
+                </div>
+              </div>
+
+              <!-- Order Details -->
+              <div
+                class="p-8 rounded-3xl"
+                style="background-color: var(--color-dark2)"
+              >
+                <h3
+                  class="text-2xl font-bold mb-6"
+                  style="color: var(--color-primary)"
+                >
+                  Order Details
+                </h3>
+
+                <div class="space-y-4 mb-6">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <p class="font-bold">Jollof Rice Special</p>
+                      <p class="text-sm text-gray-400">Qty: 1 • Medium spice</p>
+                    </div>
+                    <p class="font-bold">₦3,500</p>
+                  </div>
+
+                  <div class="border-t border-gray-700 pt-4">
+                    <div class="flex justify-between text-gray-400 mb-2">
+                      <span>Subtotal</span>
+                      <span>₦3,500</span>
+                    </div>
+                    <div class="flex justify-between text-gray-400 mb-2">
+                      <span>Delivery Fee</span>
+                      <span>₦200</span>
+                    </div>
+                    <div class="flex justify-between text-xl font-bold mt-4">
+                      <span>Total</span>
+                      <span style="color: var(--color-primary)">₦3,700</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl glass">
+                  <div class="flex items-start gap-3">
+                    <i
+                      class="ion-location text-2xl"
+                      style="color: var(--color-primary)"
+                    ></i>
+                    <div>
+                      <p class="font-bold mb-1">Delivery Address</p>
+                      <p class="text-sm text-gray-400">
+                        Room 305, Zik Hostel, UNN Campus
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Map Placeholder -->
+            <div
+              class="p-8 rounded-3xl mb-8"
+              style="background-color: var(--color-dark2)"
+            >
+              <h3
+                class="text-2xl font-bold mb-6"
+                style="color: var(--color-primary)"
+              >
+                Live Location
+              </h3>
+              <div
+                class="relative h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center"
+              >
+                <div class="text-center">
+                  <i
+                    class="ion-map text-8xl mb-4"
+                    style="color: var(--color-primary)"
+                  ></i>
+                  <p class="text-xl text-gray-400"></p>
+                  <p class="text-sm text-gray-500 mt-2"></p>
+                </div>
+
+                <!-- Animated Ping -->
+                <div
+                  class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                >
+                  <div class="relative">
+                    <div class="w-4 h-4 rounded-full gradient-button"></div>
+                    <div
+                      class="absolute inset-0 rounded-full gradient-button animate-ping opacity-75"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Need Help -->
+            <div
+              class="p-8 rounded-3xl text-center"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--color-primary),
+                  #ff8833
+                );
+              "
+            >
+              <h3 class="text-2xl font-bold text-white mb-4">Need Help?</h3>
+              <p class="text-white/90 mb-6">Having issues with your order?</p>
+              <div class="flex flex-wrap justify-center gap-4">
+                <button
+                  class="px-6 py-3 rounded-xl bg-white font-bold hover:scale-105 transition-transform"
+                  style="color: var(--color-primary)"
+                >
+                  <i class="ion-ios-telephone mr-2"></i>
+                  Call Support
+                </button>
+                <button
+                  class="px-6 py-3 rounded-xl bg-white/20 backdrop-blur-sm text-white font-bold hover:scale-105 transition-transform"
+                >
+                  <i class="ion-close-circled mr-2"></i>
+                  Cancel Order
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo Button -->
+          <div class="text-center mt-8">
+            <p class="text-gray-400 mb-4">
+              Don't have an order ID? Try our demo:
+            </p>
+            <button
+              onclick="showDemoTracking()"
+              class="px-8 py-4 rounded-xl font-bold text-white gradient-button"
+            >
+              View Demo Tracking
+            </button>
+          </div>
+        </section>
+        <!-- COPY TRACK ORDER PAGE UNTIL HERE -->
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+      // Tab Switching
+      function switchTab(tabName) {
+        // Hide all tabs
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Remove active class from all buttons
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected tab
+        document.getElementById(tabName + "-tab").classList.add("active");
+
+        // Add active class to clicked button
+        event.target.classList.add("active");
+      }
+
+      // Menu Filter Functions
+      function filterMenu() {
+        const searchTerm = document
+          .getElementById("menuSearch")
+          .value.toLowerCase();
+        const menuItems = document.querySelectorAll(".menu-item");
+        let visibleCount = 0;
+
+        menuItems.forEach((item) => {
+          const title = item.querySelector("h3").textContent.toLowerCase();
+          const description = item.querySelector("p").textContent.toLowerCase();
+          const matchesSearch =
+            title.includes(searchTerm) || description.includes(searchTerm);
+
+          if (matchesSearch) {
+            item.style.display = "block";
+            visibleCount++;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        document.getElementById("itemCount").textContent = visibleCount;
+      }
+
+      function updatePriceFilter(value) {
+        document.getElementById("priceValue").textContent =
+          "₦" + parseInt(value).toLocaleString();
+        // Add filter logic here
+      }
+
+      // Cart Functions
+      let cart = [];
+      let cartTotal = 0;
+
+      function addToCart(itemName, price) {
+        cart.push({ name: itemName, price: price });
+        cartTotal += price;
+        updateCart();
+
+        // Show notification
+        alert(`${itemName} added to cart!`);
+      }
+      
+  function toggleMenu() {
+    const nav = document.getElementById("tabNav");
+    nav.classList.toggle("hidden");
+    nav.classList.toggle("flex");
+    nav.classList.add("flex-col");
+  }
+
+  function closeMenu() {
+    if (window.innerWidth < 640) {
+      const nav = document.getElementById("tabNav");
+      nav.classList.add("hidden");
+      nav.classList.remove("flex");
+    }
+  }
+
+
+
+      function updateCart() {
+        document.getElementById("cartCount").textContent = cart.length;
+        document.getElementById("cartTotal").textContent =
+          "₦" + cartTotal.toLocaleString();
+
+        const cartItems = document.getElementById("cartItems");
+        if (cart.length === 0) {
+          cartItems.innerHTML =
+            '<p class="text-center text-gray-400 mt-20">Your cart is empty</p>';
+        } else {
+          cartItems.innerHTML = cart
+            .map(
+              (item, index) => `
+          <div class="p-4 rounded-xl mb-3" style="background-color: var(--color-dark);">
+            <div class="flex justify-between items-center">
+              <div>
+                <p class="font-bold">${item.name}</p>
+                <p class="text-sm" style="color: var(--color-primary);">₦${item.price.toLocaleString()}</p>
+              </div>
+              <button onclick="removeFromCart(${index})" class="text-red-500 hover:scale-110 transition">
+                <i class="ion-close-circled text-2xl"></i>
+              </button>
+            </div>
+          </div>
+        `,
+            )
+            .join("");
+        }
+      }
+
+      function removeFromCart(index) {
+        cartTotal -= cart[index].price;
+        cart.splice(index, 1);
+        updateCart();
+      }
+
+      function toggleCart() {
+        const sidebar = document.getElementById("cartSidebar");
+        const overlay = document.getElementById("cartOverlay");
+
+        if (sidebar.classList.contains("translate-x-full")) {
+          sidebar.classList.remove("translate-x-full");
+          overlay.classList.remove("hidden");
+        } else {
+          sidebar.classList.add("translate-x-full");
+          overlay.classList.add("hidden");
+        }
+      }
+
+      // FAQ Functions
+      function toggleAccordion(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector(".accordion-icon");
+        const isActive = content.classList.contains("active");
+
+        // Close all accordions
+        document.querySelectorAll(".accordion-content").forEach((item) => {
+          item.classList.remove("active");
+        });
+        document.querySelectorAll(".accordion-icon").forEach((item) => {
+          item.classList.remove("ion-ios-minus");
+          item.classList.add("ion-ios-plus");
+        });
+
+        // Open clicked accordion
+        if (!isActive) {
+          content.classList.add("active");
+          icon.classList.remove("ion-ios-plus");
+          icon.classList.add("ion-ios-minus");
+        }
+      }
+
+      function searchFAQ() {
+        const searchTerm = document
+          .getElementById("faqSearch")
+          .value.toLowerCase();
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector("span").textContent.toLowerCase();
+          const answer = item
+            .querySelector(".accordion-content p")
+            .textContent.toLowerCase();
+
+          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+
+      function filterFAQ(category) {
+        const faqItems = document.querySelectorAll(".faq-item");
+        const buttons = document.querySelectorAll(".faq-category-btn");
+
+        // Update button styles
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.target.classList.add("active");
+
+        // Filter items
+        faqItems.forEach((item) => {
+          if (category === "all" || item.dataset.category === category) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
+
+      // Track Order Functions
+      function trackOrder() {
+        const orderId = document.getElementById("orderIdInput").value;
+
+        if (orderId.trim() === "") {
+          alert("Please enter an Order ID");
+          return;
+        }
+
+        // Show tracking result
+        document.getElementById("trackingResult").classList.remove("hidden");
+
+        // Scroll to result
+        document
+          .getElementById("trackingResult")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      function showDemoTracking() {
+        document.getElementById("orderIdInput").value = "DB12345";
+        trackOrder();
+      }
+
+      // Add active state styles for FAQ categories
+      const style = document.createElement("style");
+      style.textContent = `
+      .faq-category-btn.active {
+        background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)) !important;
+        color: white !important;
+      }
+    `;
+      document.head.appendChild(style);
+    </scrip>
+  </body>
+</html>
