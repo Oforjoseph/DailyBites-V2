@@ -147,6 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
     }
+    function comingsoon() {
+      alert(" Coming soon!");
+    }
 
     showTestimonial(currentTestimonial);
     setInterval(() => {
