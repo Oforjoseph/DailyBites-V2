@@ -253,7 +253,7 @@
       <i class="ion-ios-nutrition"></i> Menu/Order
     </button>
 
-    <button
+    <button 
       class="tab-btn text-lg font-bold"
       onclick="switchTab('about'); closeMenu();"
     >
@@ -263,11 +263,12 @@
     <button
       class="tab-btn text-lg font-bold"
       onclick="switchTab('faq'); closeMenu();"
+     
     >
       <i class="ion-help-circled"></i> FAQ
     </button>
-
-    <button
+   
+    <button 
       class="tab-btn text-lg font-bold"
       onclick="switchTab('track'); closeMenu();"
     >
@@ -283,8 +284,8 @@
     <!-- ========================================== -->
    
         <!-- COPY MENU PAGE FROM HERE -->
-        <section
-          class="min-h-screen"
+        <section id="menu"
+          class="min-h-screen tab-section"
           style="background-color: var(--color-dark)"
         >
           <!-- Hero Banner -->
@@ -299,7 +300,9 @@
             "
           >
             <div
-              class="absolute inset-0 flex items-center justify-center text-center p-8"
+              class="absolute inset-0 flex items-center justify-center text-center p-8" style="background-image: url(img/banner2.webp);
+              background-size: cover;
+              background-position: center;"
             >
               <div>
                 <h1 class="text-5xl md:text-6xl font-black text-white mb-4">
@@ -490,7 +493,7 @@
             </aside>
 
             <!-- Main Menu Grid -->
-            <main class="lg:col-span-3">
+            <main class="lg:col-span-3 mb-8">
               <!-- Sort & View Options -->
               <div
                 class="flex flex-wrap justify-between items-center mb-6 p-4 rounded-2xl"
@@ -515,7 +518,7 @@
               <!-- Food Items Grid -->
               <div
                 id="menuGrid"
-                class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"
+                class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 "
               >
                 <!-- Food Card 1 -->
                 <div
@@ -526,11 +529,11 @@
                 >
                   <div
                     class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                     style="background-image: url(img/friedricecontinental.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                    
                   </div>
                   <div class="price-badge">₦3,500</div>
                   <div class="p-5">
@@ -592,12 +595,11 @@
                   data-price="2500"
                 >
                   <div
-                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"style="background-image: url(img/rice.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                    
                   </div>
                   <div class="price-badge">₦2,500</div>
                   <div class="p-5">
@@ -643,21 +645,20 @@
                   data-price="2000"
                 >
                   <div
-                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"style="background-image: url(img/newdailybites.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                
                   </div>
                   <div class="price-badge">₦2,000</div>
                   <div class="p-5">
                     <div class="flex items-center gap-2 mb-2">
                       <span class="text-yellow-400">★★★★★</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Amala & Ewedu</h3>
+                    <h3 class="text-xl font-bold mb-2">Yam & Egg sauce</h3>
                     <p class="text-sm text-gray-400 mb-4">
-                      Smooth amala with ewedu soup and assorted meat
+                      Soft Yam with egg sauce and assorted meat
                     </p>
 
                     <div class="mb-4 space-y-2">
@@ -694,12 +695,11 @@
                   data-price="1500"
                 >
                   <div
-                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"style="background-image: url(img/shawarma2.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                    
                   </div>
                   <div class="price-badge">₦1,500</div>
                   <div class="p-5">
@@ -757,12 +757,11 @@
                   data-price="4000"
                 >
                   <div
-                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"style="background-image: url(img/pasta.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                   
                   </div>
                   <div class="price-badge">₦4,000</div>
                   <div class="p-5">
@@ -805,12 +804,11 @@
                   data-price="1800"
                 >
                   <div
-                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"
+                    class="h-48 bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center overflow-hidden"style="background-image: url(img/englishbreakfast.webp);
+                    background-size: cover;
+                    background-position: center;"
                   >
-                    <i
-                      class="ion-ios-nutrition text-8xl group-hover:scale-125 transition-transform duration-500"
-                      style="color: var(--color-primary)"
-                    ></i>
+                    
                   </div>
                   <div class="price-badge">₦1,800</div>
                   <div class="p-5">
@@ -919,16 +917,16 @@
             onclick="toggleCart()"
           ></div>
         </section>
-        <!-- COPY MENU PAGE UNTIL HERE -->
+        
       </div>
     </div>
 
     <!-- ========================================== -->
     <!-- TAB 2: ABOUT US PAGE -->
     <!-- ========================================== -->
-    <div id="about-tab" class="tab-content">
+    <div id="about" class="tab-section hidden">
       <div class="max-w-7xl mx-auto mb-20">
-        <div
+       <!--  <div
           class="text-center mb-8 p-6 rounded-2xl"
           style="background-color: var(--color-dark2)"
         >
@@ -939,9 +937,91 @@
             👥 ABOUT US PAGE
           </h2>
           <p class="text-gray-400">Our story, mission, team, and values</p>
-        </div>
+        </div> -->
+          <div
+            class="p-10 rounded-3xl my-4"
+            style="background-color: var(--color-dark)"
+          >
+            <h2
+              class="text-4xl font-bold text-center mb-4"
+              style="color: var(--color-primary)"
+            >
+              Meet Our Team
+            </h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">
+              The people making it happen every day
+            </p>
 
-        <!-- COPY ABOUT PAGE FROM HERE -->
+            <div class="grid md:grid-cols-3 gap-8">
+              <!-- Team Member 1 -->
+              <div class="text-center smooth-hover bg-dark2 p-6 rounded-2xl ">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/joeceo.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">Joseph Ofor</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Founder & CEO
+                </p>
+                <p class="text-sm text-gray-400">
+                  Food enthusiast with 5+ years experience in hospitality
+                </p>
+              </div>
+
+              <!-- Team Member 2 -->
+              <div class="text-center smooth-hover bg-dark2 p-6 rounded-2xl">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/125982.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">James Bach</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Operations Manager
+                </p>
+                <p class="text-sm text-gray-400">
+                  Ensures smooth operations and timely deliveries
+                </p>
+              </div>
+
+              <!-- Team Member 3 -->
+              <div class="text-center smooth-hover bg-dark2 p-6 rounded-2xl">
+                <div
+                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
+                  style="
+                    background-image: url(img/2148723257.jpg);
+                    background-size: cover;
+                    background-position: center;
+                  "
+                ></div>
+                <h3 class="text-xl font-bold mb-2">Chidi Okafor</h3>
+                <p
+                  style="color: var(--color-primary)"
+                  class="font-semibold mb-2"
+                >
+                  Head Chef
+                </p>
+                <p class="text-sm text-gray-400">
+                  Master chef crafting authentic Nigerian delicacies
+                </p>
+              </div>
+            </div>
+          </div>
+
+       
         <section style="background-color: var(--color-dark)">
           <!-- Hero Section -->
           <div
@@ -1021,147 +1101,7 @@
           </div>
 
           <!-- Timeline -->
-          <div
-            class="mb-16 p-10 rounded-3xl"
-            style="background-color: var(--color-dark2)"
-          >
-            <h2
-              class="text-4xl font-bold text-center mb-12"
-              style="color: var(--color-primary)"
-            >
-              Our Journey
-            </h2>
-
-            <div class="relative max-w-4xl mx-auto">
-              <div class="timeline-line hidden md:block"></div>
-
-              <div class="space-y-12">
-                <!-- Timeline Item 1 -->
-                <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                  <div class="md:text-right">
-                    <div
-                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
-                    >
-                      <span class="font-bold text-white">2022</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2">The Beginning</h4>
-                    <p class="text-gray-400">
-                      Started as a small food vendor serving UNN students from a
-                      single location
-                    </p>
-                  </div>
-                  <div class="flex justify-center">
-                    <div
-                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
-                      style="
-                        background: linear-gradient(
-                          135deg,
-                          var(--color-secondary),
-                          var(--color-accent)
-                        );
-                      "
-                    >
-                      🌱
-                    </div>
-                  </div>
-                  <div class="md:block hidden"></div>
-                </div>
-
-                <!-- Timeline Item 2 -->
-                <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                  <div class="md:block hidden"></div>
-                  <div class="flex justify-center md:order-first">
-                    <div
-                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
-                      style="
-                        background: linear-gradient(
-                          135deg,
-                          var(--color-secondary),
-                          var(--color-accent)
-                        );
-                      "
-                    >
-                      🚀
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
-                    >
-                      <span class="font-bold text-white">2023</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2">Expansion</h4>
-                    <p class="text-gray-400">
-                      Launched delivery service and expanded menu to include 50+
-                      dishes
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Timeline Item 3 -->
-                <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                  <div class="md:text-right">
-                    <div
-                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
-                    >
-                      <span class="font-bold text-white">2024</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2">Going Digital</h4>
-                    <p class="text-gray-400">
-                      Launched online ordering platform and mobile app for
-                      seamless experience
-                    </p>
-                  </div>
-                  <div class="flex justify-center">
-                    <div
-                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
-                      style="
-                        background: linear-gradient(
-                          135deg,
-                          var(--color-secondary),
-                          var(--color-accent)
-                        );
-                      "
-                    >
-                      📱
-                    </div>
-                  </div>
-                  <div class="md:block hidden"></div>
-                </div>
-
-                <!-- Timeline Item 4 -->
-                <div class="relative grid md:grid-cols-2 gap-8 items-center">
-                  <div class="md:block hidden"></div>
-                  <div class="flex justify-center md:order-first">
-                    <div
-                      class="w-16 h-16 rounded-full flex items-center justify-center text-3xl z-10"
-                      style="
-                        background: linear-gradient(
-                          135deg,
-                          var(--color-secondary),
-                          var(--color-accent)
-                        );
-                      "
-                    >
-                      🏆
-                    </div>
-                  </div>
-                  <div>
-                    <div
-                      class="inline-block px-4 py-2 rounded-full mb-3 gradient-button"
-                    >
-                      <span class="font-bold text-white">2025</span>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-2">Market Leader</h4>
-                    <p class="text-gray-400">
-                      Serving 500+ customers daily, #1 food delivery service in
-                      Nsukka
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
 
           <!-- Stats Counter -->
           <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
@@ -1307,114 +1247,18 @@
           </div>
 
           <!-- Team Section -->
-          <div
-            class="p-10 rounded-3xl"
-            style="background-color: var(--color-dark2)"
-          >
-            <h2
-              class="text-4xl font-bold text-center mb-4"
-              style="color: var(--color-primary)"
-            >
-              Meet Our Team
-            </h2>
-            <p class="text-center text-gray-400 mb-12 text-lg">
-              The people making it happen every day
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8">
-              <!-- Team Member 1 -->
-              <div class="text-center smooth-hover">
-                <div
-                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
-                  style="
-                    background-image: url(img/joeceo.jpg);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <h3 class="text-xl font-bold mb-2">Joseph Ofor</h3>
-                <p
-                  style="color: var(--color-primary)"
-                  class="font-semibold mb-2"
-                >
-                  Founder & CEO
-                </p>
-                <p class="text-sm text-gray-400">
-                  Food enthusiast with 5+ years experience in hospitality
-                </p>
-              </div>
-
-              <!-- Team Member 2 -->
-              <div class="text-center smooth-hover">
-                <div
-                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
-                  style="
-                    background-image: url(img/125982.jpg);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <h3 class="text-xl font-bold mb-2">James Bach</h3>
-                <p
-                  style="color: var(--color-primary)"
-                  class="font-semibold mb-2"
-                >
-                  Operations Manager
-                </p>
-                <p class="text-sm text-gray-400">
-                  Ensures smooth operations and timely deliveries
-                </p>
-              </div>
-
-              <!-- Team Member 3 -->
-              <div class="text-center smooth-hover">
-                <div
-                  class="w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center text-5xl"
-                  style="
-                    background-image: url(img/2148723257.jpg);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <h3 class="text-xl font-bold mb-2">Chidi Okafor</h3>
-                <p
-                  style="color: var(--color-primary)"
-                  class="font-semibold mb-2"
-                >
-                  Head Chef
-                </p>
-                <p class="text-sm text-gray-400">
-                  Master chef crafting authentic Nigerian delicacies
-                </p>
-              </div>
-            </div>
-          </div>
         </section>
-        <!-- COPY ABOUT PAGE UNTIL HERE -->
+        
       </div>
     </div>
 
     <!-- ========================================== -->
     <!-- TAB 3: FAQ PAGE -->
     <!-- ========================================== -->
-    <div id="faq-tab" class="tab-content">
-      <div class="max-w-7xl mx-auto mb-20">
-        <div
-          class="text-center mb-8 p-6 rounded-2xl"
-          style="background-color: var(--color-dark2)"
-        >
-          <h2
-            class="text-4xl font-bold mb-4"
-            style="color: var(--color-primary)"
-          >
-            ❓ FAQ PAGE
-          </h2>
-          <p class="text-gray-400">
-            Frequently asked questions with search and categories
-          </p>
-        </div>
+    <div id="faq" class="tab-section hidden">
+      
 
-        <!-- COPY FAQ PAGE FROM HERE -->
+        
         <section style="background-color: var(--color-dark)">
           <!-- Hero -->
           <div class="text-center mb-12">
@@ -1763,7 +1607,7 @@
 
           <!-- Still Have Questions CTA -->
           <div
-            class="mt-16 p-10 rounded-3xl text-center"
+            class="my-16 p-10 rounded-3xl text-center"
             style="
               background: linear-gradient(
                 135deg,
@@ -1789,34 +1633,18 @@
             </a>
           </div>
         </section>
-        <!-- COPY FAQ PAGE UNTIL HERE -->
+   
       </div>
     </div>
 
     <!-- ========================================== -->
     <!-- TAB 4: TRACK ORDER PAGE -->
     <!-- ========================================== -->
-    <div id="track-tab" class="tab-content">
-      <div class="max-w-7xl mx-auto mb-20">
-        <div
-          class="text-center mb-8 p-6 rounded-2xl"
-          style="background-color: var(--color-dark2)"
-        >
-          <h2
-            class="text-4xl font-bold mb-4"
-            style="color: var(--color-primary)"
-          >
-            📍 TRACK ORDER PAGE
-          </h2>
-          <p class="text-gray-400">
-            Real-time order tracking with timeline and delivery info
-          </p>
-        </div>
+   
 
-        <!-- COPY TRACK ORDER PAGE FROM HERE -->
-        <section style="background-color: var(--color-dark)">
+        <section id="track" class="tab-section hidden" style="background-color: var(--color-dark)">
           <!-- Hero -->
-          <div class="text-center mb-12">
+          <div class="text-center my -12">
             <h1
               class="text-5xl md:text-6xl font-black mb-6"
               style="color: var(--color-primary)"
@@ -2240,234 +2068,11 @@
             </button>
           </div>
         </section>
-        <!-- COPY TRACK ORDER PAGE UNTIL HERE -->
+      
       </div>
     </div>
 
-    <!-- JavaScript -->
-    <script>
-      // Tab Switching
-      function switchTab(tabName) {
-        // Hide all tabs
-        document.querySelectorAll(".tab-content").forEach((tab) => {
-          tab.classList.remove("active");
-        });
 
-        // Remove active class from all buttons
-        document.querySelectorAll(".tab-btn").forEach((btn) => {
-          btn.classList.remove("active");
-        });
-
-        // Show selected tab
-        document.getElementById(tabName + "-tab").classList.add("active");
-
-        // Add active class to clicked button
-        event.target.classList.add("active");
-      }
-
-      // Menu Filter Functions
-      function filterMenu() {
-        const searchTerm = document
-          .getElementById("menuSearch")
-          .value.toLowerCase();
-        const menuItems = document.querySelectorAll(".menu-item");
-        let visibleCount = 0;
-
-        menuItems.forEach((item) => {
-          const title = item.querySelector("h3").textContent.toLowerCase();
-          const description = item.querySelector("p").textContent.toLowerCase();
-          const matchesSearch =
-            title.includes(searchTerm) || description.includes(searchTerm);
-
-          if (matchesSearch) {
-            item.style.display = "block";
-            visibleCount++;
-          } else {
-            item.style.display = "none";
-          }
-        });
-
-        document.getElementById("itemCount").textContent = visibleCount;
-      }
-
-      function updatePriceFilter(value) {
-        document.getElementById("priceValue").textContent =
-          "₦" + parseInt(value).toLocaleString();
-        // Add filter logic here
-      }
-
-      // Cart Functions
-      let cart = [];
-      let cartTotal = 0;
-
-      function addToCart(itemName, price) {
-        cart.push({ name: itemName, price: price });
-        cartTotal += price;
-        updateCart();
-
-        // Show notification
-        alert(`${itemName} added to cart!`);
-      }
-      
-  function toggleMenu() {
-    const nav = document.getElementById("tabNav");
-    nav.classList.toggle("hidden");
-    nav.classList.toggle("flex");
-    nav.classList.add("flex-col");
-  }
-
-  function closeMenu() {
-    if (window.innerWidth < 640) {
-      const nav = document.getElementById("tabNav");
-      nav.classList.add("hidden");
-      nav.classList.remove("flex");
-    }
-  }
-
-
-
-      function updateCart() {
-        document.getElementById("cartCount").textContent = cart.length;
-        document.getElementById("cartTotal").textContent =
-          "₦" + cartTotal.toLocaleString();
-
-        const cartItems = document.getElementById("cartItems");
-        if (cart.length === 0) {
-          cartItems.innerHTML =
-            '<p class="text-center text-gray-400 mt-20">Your cart is empty</p>';
-        } else {
-          cartItems.innerHTML = cart
-            .map(
-              (item, index) => `
-          <div class="p-4 rounded-xl mb-3" style="background-color: var(--color-dark);">
-            <div class="flex justify-between items-center">
-              <div>
-                <p class="font-bold">${item.name}</p>
-                <p class="text-sm" style="color: var(--color-primary);">₦${item.price.toLocaleString()}</p>
-              </div>
-              <button onclick="removeFromCart(${index})" class="text-red-500 hover:scale-110 transition">
-                <i class="ion-close-circled text-2xl"></i>
-              </button>
-            </div>
-          </div>
-        `,
-            )
-            .join("");
-        }
-      }
-
-      function removeFromCart(index) {
-        cartTotal -= cart[index].price;
-        cart.splice(index, 1);
-        updateCart();
-      }
-
-      function toggleCart() {
-        const sidebar = document.getElementById("cartSidebar");
-        const overlay = document.getElementById("cartOverlay");
-
-        if (sidebar.classList.contains("translate-x-full")) {
-          sidebar.classList.remove("translate-x-full");
-          overlay.classList.remove("hidden");
-        } else {
-          sidebar.classList.add("translate-x-full");
-          overlay.classList.add("hidden");
-        }
-      }
-
-      // FAQ Functions
-      function toggleAccordion(button) {
-        const content = button.nextElementSibling;
-        const icon = button.querySelector(".accordion-icon");
-        const isActive = content.classList.contains("active");
-
-        // Close all accordions
-        document.querySelectorAll(".accordion-content").forEach((item) => {
-          item.classList.remove("active");
-        });
-        document.querySelectorAll(".accordion-icon").forEach((item) => {
-          item.classList.remove("ion-ios-minus");
-          item.classList.add("ion-ios-plus");
-        });
-
-        // Open clicked accordion
-        if (!isActive) {
-          content.classList.add("active");
-          icon.classList.remove("ion-ios-plus");
-          icon.classList.add("ion-ios-minus");
-        }
-      }
-
-      function searchFAQ() {
-        const searchTerm = document
-          .getElementById("faqSearch")
-          .value.toLowerCase();
-        const faqItems = document.querySelectorAll(".faq-item");
-
-        faqItems.forEach((item) => {
-          const question = item.querySelector("span").textContent.toLowerCase();
-          const answer = item
-            .querySelector(".accordion-content p")
-            .textContent.toLowerCase();
-
-          if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-            item.style.display = "block";
-          } else {
-            item.style.display = "none";
-          }
-        });
-      }
-
-      function filterFAQ(category) {
-        const faqItems = document.querySelectorAll(".faq-item");
-        const buttons = document.querySelectorAll(".faq-category-btn");
-
-        // Update button styles
-        buttons.forEach((btn) => btn.classList.remove("active"));
-        event.target.classList.add("active");
-
-        // Filter items
-        faqItems.forEach((item) => {
-          if (category === "all" || item.dataset.category === category) {
-            item.style.display = "block";
-          } else {
-            item.style.display = "none";
-          }
-        });
-      }
-
-      // Track Order Functions
-      function trackOrder() {
-        const orderId = document.getElementById("orderIdInput").value;
-
-        if (orderId.trim() === "") {
-          alert("Please enter an Order ID");
-          return;
-        }
-
-        // Show tracking result
-        document.getElementById("trackingResult").classList.remove("hidden");
-
-        // Scroll to result
-        document
-          .getElementById("trackingResult")
-          .scrollIntoView({ behavior: "smooth" });
-      }
-
-      function showDemoTracking() {
-        document.getElementById("orderIdInput").value = "DB12345";
-        trackOrder();
-      }
-
-      // Add active state styles for FAQ categories
-      const style = document.createElement("style");
-      style.textContent = `
-      .faq-category-btn.active {
-        background: linear-gradient(135deg, var(--color-secondary), var(--color-accent)) !important;
-        color: white !important;
-      }
-    `;
-      document.head.appendChild(style);
-    </scrip>
+    <script src="src/order.js" defer></script>
   </body>
 </html>
