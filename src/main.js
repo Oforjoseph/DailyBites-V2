@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Navbar scroll + back to top
+  // Navbar + back to top
   const backToTop = document.getElementById("backToTop");
   window.addEventListener("scroll", () => {
     if (!mainNav) return;

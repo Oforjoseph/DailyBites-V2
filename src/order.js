@@ -1,13 +1,13 @@
 // Tab Switching
 function switchTab(tabName) {
   // --- EXISTING LOGIC ---
-  // hide all tab sections
+
   document
     .querySelectorAll(".tab-section")
     .forEach((sec) => sec.classList.add("hidden"));
   document.getElementById(tabName).classList.remove("hidden");
 
-  // --- NEW LINE: update URL hash ---
+  // ---  updated URL hash ---
   window.location.hash = tabName;
 }
 window.addEventListener("load", () => {
@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   if (hash && document.getElementById(hash)) {
     switchTab(hash);
   } else {
-    switchTab("menu"); // default tab
+    switchTab("menu");
   }
 });
 // Menu Filter Functions
@@ -44,7 +44,6 @@ function filterMenu() {
 function updatePriceFilter(value) {
   document.getElementById("priceValue").textContent =
     "₦" + parseInt(value).toLocaleString();
-  // Add filter logic here
 }
 
 // Cart Functions
@@ -130,7 +129,7 @@ function toggleAccordion(button) {
   const icon = button.querySelector(".accordion-icon");
   const isActive = content.classList.contains("active");
 
-  // Close all accordions
+  // Close accordions
   document.querySelectorAll(".accordion-content").forEach((item) => {
     item.classList.remove("active");
   });
